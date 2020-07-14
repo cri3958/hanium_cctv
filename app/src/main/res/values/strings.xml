@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">한이음cctv</string>
+
+    <string name="autologin">자동로그인</string>
+    <string name="login">로그인</string>
+    <string name="register">회원가입</string>
+
+    <string name="id">아이디</string>
+    <string name="idcheck">중복확인</string>
+    <string name="password">비밀번호</string>
+    <string name="passwordcheck">비밀번호확인</string>
+    <string name="name">이름</string>
+
+    <string name="cctvlist_cctvid">cctvID : </string>
+    <string name="cctvlist_cctvpw">cctv비밀번호 : </string>
+    <string name="cctvlist_name">cctv이름 : </string>
+    <string name="cctvlist_place">cctv장소 : </string>
+    <string name="cctvlist_special">특이사항 : </string>
+</resources>
