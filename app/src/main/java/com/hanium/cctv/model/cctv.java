@@ -2,21 +2,26 @@ package com.hanium.cctv.model;
 
 public class cctv {
 
-    private String id, pw, name, place, special;
+    private String number, pw, name, place, special;
+    private int id;
 
     public cctv() {}
 
-    public cctv(String id, String pw, String name, String place, String special){
-        this.id = id;
+    public cctv(String number, String pw, String name, String place, String special){
+        this.number = number;
         this.pw = pw;
         this.name = name;
         this.place = place;
         this.special = special;
     }
 
-    public String getId() {return id;}
+    public int getId(){return id;}
 
-    public void setId(String id) {this.id = id;}
+    public void setId(int id) {this.id = id;}
+
+    public String getNumber() {return number;}
+
+    public void setNumber(String number) {this.number = number;}
 
     public String getPw() {return pw;}
 
