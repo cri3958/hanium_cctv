@@ -3,29 +3,42 @@ package com.hanium.cctv.function;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.hanium.cctv.CCTVAdapter;
 import com.hanium.cctv.R;
 import com.hanium.cctv.model.cctv;
 import com.hanium.cctv.util.DbHelper;
 
+import java.util.List;
+
 public class list_of_cctv extends AppCompatActivity {
     View addlistView;
     EditText text_cctvnum,text_cctvpw,text_name,text_place,text_special;
-    GridView gridView;
+    CCTVAdapter cctvAdapter;
+    ListView listView;
+
+    private cctv cctv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_list_of_cctv);
 
-        final cctv cctv = new cctv();
-
+        cctv = new cctv();
+        MakeCCTVlist();
         addlistView = (View) View.inflate(list_of_cctv.this,R.layout.addwork_cctvlist,null);
         FloatingActionButton add_cctvlist = (FloatingActionButton) findViewById(R.id.fab_add_cctvlist);
 
@@ -52,6 +65,8 @@ public class list_of_cctv extends AppCompatActivity {
 
                             DbHelper dbHelper = new DbHelper(list_of_cctv.this);
                             dbHelper.insertCCTVLIST(cctv);
+                            MakeCCTVlist();
+
                         }
 
                     }
@@ -62,7 +77,63 @@ public class list_of_cctv extends AppCompatActivity {
         });
     }
 
-    private void MakeCCTVgrid(){
-        gridView = (GridView) findViewById(R.id.gridview_cctvlist);
+    private void MakeCCTVlist(){
+        listView = (ListView) findViewById(R.id.listview_cctvlist);
+
+
     }
+
+    /*public class CCTVAdapter extends BaseAdapter{
+        private final List<String> list;
+        private final LayoutInflater inflater;
+
+        public CCTVAdapter(Context context, List<String> list){
+            this.list = list;
+            this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        }
+
+        @Override
+        public int getCount() {
+            return list.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return list.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            CCTVViewHolder holder = null;
+            cctv = new cctv();
+            if (convertView == null) {
+                convertView = inflater.inflate(R.layout.cctvlist_item_gridview, parent, false);
+                holder = new CCTVViewHolder();
+                holder.cctvlistName = (TextView) convertView.findViewById(R.id.cctvlist_item_name);
+                holder.cctvlistNum = (TextView) convertView.findViewById(R.id.cctvlist_item_num);
+                holder.cctvlistInfo = (ImageView) convertView.findViewById(R.id.cctvlist_item_info);
+                holder.cctvlistPlay = (ImageView) convertView.findViewById(R.id.cctvlist_item_play);
+                convertView.setTag(holder);
+            } else
+                holder = (CCTVViewHolder) convertView.getTag();
+
+            holder.cctvlistName.setText(cctv.getName());
+            holder.cctvlistNum.setText(cctv.getNumber());
+
+            //info와 play눌렀을때의 동작 만들어야함.
+
+            return convertView;
+        }
+
+        private class CCTVViewHolder{
+            TextView cctvlistNum,cctvlistName;
+            ImageView cctvlistInfo, cctvlistPlay;
+        }
+    }*/
+
 }

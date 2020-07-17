@@ -7,16 +7,15 @@
     tools:context=".function.list_of_cctv">
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true">
-        <GridView
-            android:id="@+id/gridview_cctvlist"
+
+        <ListView
+            android:id="@+id/listview_cctvlist"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </ScrollView>
+            android:layout_height="match_parent"
+            android:listSelector="@android:color/transparent"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@null"/>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add_cctvlist"
