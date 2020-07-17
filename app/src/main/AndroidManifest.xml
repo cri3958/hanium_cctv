@@ -13,7 +13,6 @@
         android:roundIcon="@drawable/cctv"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".function.list_of_cctv"></activity>
         <activity
             android:name=".Login.LoginActivity"
             android:configChanges="screenSize|orientation"
@@ -30,6 +29,10 @@
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".MainActivity"
+            android:configChanges="screenSize|orientation"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".function.activity_list_of_cctv"
             android:configChanges="screenSize|orientation"
             android:screenOrientation="portrait"></activity>
     </application>

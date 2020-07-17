@@ -1,32 +1,43 @@
 package com.hanium.cctv;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.hanium.cctv.function.list_of_cctv;
-
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.hanium.cctv.Login.LoginActivity;
+import com.hanium.cctv.function.activity_list_of_cctv;
+
 public class MainActivity extends AppCompatActivity {
     /*0605 어플시작시 인터넷 연결여부 체크,아이콘일단 변경
-    * 아이콘 출처 : https://www.flaticon.com/kr/free-icon/security-camera_2933760?term=cctv&page=1&position=1
-    * 0608 회원가입 끝나면 finish()로*/
+     * 아이콘 출처 : https://www.flaticon.com/kr/free-icon/security-camera_2933760?term=cctv&page=1&position=1
+     * 0608 회원가입 끝나면 finish()로*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btn_checkcctv = (Button) findViewById(R.id.btn_checkcctv);
+        Button btn_checkcctv = findViewById(R.id.btn_checkcctv);
         btn_checkcctv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, list_of_cctv.class);
+                Intent intent = new Intent(MainActivity.this, activity_list_of_cctv.class);
                 startActivity(intent);
+            }
+        });
+
+        Button btn_logout = findViewById(R.id.btn_logout);
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
         /*Button btn_emergency = (Button) findViewById(R.id.btn_emergency);

@@ -25,7 +25,6 @@ import com.android.volley.toolbox.Volley;
 import com.hanium.cctv.MainActivity;
 import com.hanium.cctv.R;
 
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -121,6 +120,7 @@ public class LoginActivity extends AppCompatActivity { //http://leehojin0207.dot
                     LoginRequest loginRequest = new LoginRequest(userID, userPass, responseListener);
                     RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                     queue.add(loginRequest);
+                    finish();
                 }
             }
         });

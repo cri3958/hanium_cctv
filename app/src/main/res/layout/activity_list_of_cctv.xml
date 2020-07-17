@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".function.list_of_cctv">
+    tools:context=".function.activity_list_of_cctv">
 
 
-
-        <ListView
-            android:id="@+id/listview_cctvlist"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:listSelector="@android:color/transparent"
-            android:cacheColorHint="@android:color/transparent"
-            android:divider="@null"/>
+    <ListView
+        android:id="@+id/listview_cctvlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:listSelector="@android:color/transparent"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -26,8 +25,19 @@
         app:borderWidth="0dp"
         app:fabSize="normal"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_del_cctvlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="#ffffff"
+        android:src="@drawable/add"
+        android:visibility="invisible"
+        app:borderWidth="0dp"
+        app:fabSize="normal" />
 
 
 </RelativeLayout>
