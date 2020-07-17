@@ -27,6 +27,7 @@ import java.util.List;
 public class list_of_cctv extends AppCompatActivity {
     View addlistView;
     EditText text_cctvnum,text_cctvpw,text_name,text_place,text_special;
+    TextView save, cancel;
     CCTVAdapter cctvAdapter;
     ListView listView;
 
@@ -46,33 +47,46 @@ public class list_of_cctv extends AppCompatActivity {
         text_cctvpw = (EditText) addlistView.findViewById(R.id.text_cctvlist_cctvpw);
         text_name = (EditText) addlistView.findViewById(R.id.text_cctvlist_name);
         text_place = (EditText) addlistView.findViewById(R.id.text_cctvlist_place);
-        text_special = (EditText) addlistView.findViewById(R.id.text_cctvlist_special);//db까진 저장 완룓함
+        text_special = (EditText) addlistView.findViewById(R.id.text_cctvlist_special);
+        save = (TextView) addlistView.findViewById(R.id.btn_cctvlist_save);
+        cancel = (TextView) addlistView.findViewById(R.id.btn_cctvlist_cancel);
+
+        AlertDialog.Builder dlg = new AlertDialog.Builder(list_of_cctv.this);
+        dlg.setTitle("cctv 추가하기");
+        dlg.setView(addlistView);
+        dlg.setCancelable(false);
+        final AlertDialog dialog = dlg.create();
+
         add_cctvlist.setOnClickListener(new View.OnClickListener() {
             @Override
+            public void onClick(View view) { dialog.show(); }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { dialog.dismiss(); }
+        });
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
-                AlertDialog.Builder dlg = new AlertDialog.Builder(list_of_cctv.this);
-                dlg.setTitle("cctv 추가하기");
-                dlg.setView(addlistView);
-                dlg.setPositiveButton("추가", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if(true) {
-                            cctv.setNumber(text_cctvnum.getText().toString());
-                            cctv.setPw(text_cctvpw.getText().toString());
-                            cctv.setName(text_name.getText().toString());
-                            cctv.setPlace(text_place.getText().toString());
-                            cctv.setSpecial(text_special.getText().toString());
+                if(true) { //번호랑 비번 검사
+                    cctv.setNumber(text_cctvnum.getText().toString());
+                    cctv.setPw(text_cctvpw.getText().toString());
+                    cctv.setName(text_name.getText().toString());
+                    cctv.setPlace(text_place.getText().toString());
+                    cctv.setSpecial(text_special.getText().toString());
 
-                            DbHelper dbHelper = new DbHelper(list_of_cctv.this);
-                            dbHelper.insertCCTVLIST(cctv);
-                            MakeCCTVlist();
+                    DbHelper dbHelper = new DbHelper(list_of_cctv.this);
+                    dbHelper.insertCCTVLIST(cctv);
+                    MakeCCTVlist();
 
-                        }
-
-                    }
-                });
-                dlg.setNegativeButton("취소",null);
-                dlg.show();
+                    text_cctvnum.getText().clear();
+                    text_cctvpw.getText().clear();
+                    text_name.getText().clear();
+                    text_place.getText().clear();
+                    text_special.getText().clear();
+                    dialog.dismiss();
+                }
             }
         });
     }

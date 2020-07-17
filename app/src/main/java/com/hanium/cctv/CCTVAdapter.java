@@ -1,47 +1,56 @@
 package com.hanium.cctv;
 
-import android.content.Context;
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
-import com.hanium.cctv.function.list_of_cctv;
+import androidx.annotation.NonNull;
+
 import com.hanium.cctv.model.cctv;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Objects;
 
-public class CCTVAdapter extends BaseAdapter {
-    private final List<String> list;
-    private final LayoutInflater inflater;
+public class CCTVAdapter extends ArrayAdapter<cctv> {
+
+    private Activity mActivity;
+    private int mResource;
+    private ArrayList<cctv> cctvlist;
     private cctv cctv;
-    public CCTVAdapter(Context context, List<String> list){
-        this.list = list;
-        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    private ListView mListView;
+
+    private class CCTVViewHolder{
+        TextView cctvlistNum,cctvlistName;
+        ImageView cctvlistInfo, cctvlistPlay;
     }
 
-    @Override
-    public int getCount() {
-        return list.size();
+    public CCTVAdapter(Activity activity, ListView listView,  int resource, ArrayList<cctv> objects) {
+        super(activity, resource, objects);
+        mActivity = activity;
+        mListView = listView;
+        mResource = resource;
+        cctvlist = objects;
     }
-
+    @NonNull
     @Override
-    public Object getItem(int position) {
-        return list.get(position);
-    }
+    public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
+        String Num = Objects.requireNonNull(getItem(position)).getNumber();
+        String pw = Objects.requireNonNull(getItem(position)).getPw();
+        String Name = Objects.requireNonNull(getItem(position)).getName();
+        String Place= Objects.requireNonNull(getItem(position)).getPlace();
+        String Special = Objects.requireNonNull(getItem(position)).getSpecial();
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
+        cctv = new cctv(Num, pw, Name, Place, Special);
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        CCTVViewHolder holder = null;
-        cctv = new cctv();
+        final CCTVViewHolder holder;
+
         if (convertView == null) {
+            LayoutInflater inflater = LayoutInflater.from(mActivity);
             convertView = inflater.inflate(R.layout.cctvlist_item_gridview, parent, false);
             holder = new CCTVViewHolder();
             holder.cctvlistName = (TextView) convertView.findViewById(R.id.cctvlist_item_name);
@@ -55,13 +64,40 @@ public class CCTVAdapter extends BaseAdapter {
         holder.cctvlistName.setText(cctv.getName());
         holder.cctvlistNum.setText(cctv.getNumber());
 
-        //info와 play눌렀을때의 동작 만들어야함.
+        holder.cctvlistInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        holder.cctvlistPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         return convertView;
     }
 
-    private class CCTVViewHolder{
-        TextView cctvlistNum,cctvlistName;
-        ImageView cctvlistInfo, cctvlistPlay;
+    @Override
+    public int getCount() {
+        return 0;
     }
+
+    @Override
+    public com.hanium.cctv.model.cctv getItem(int i) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+    public ArrayList<cctv> getCctvlist() { return cctvlist; }
+
+    public cctv getCctv() { return cctv; }
+
+
 }

@@ -51,15 +51,12 @@ public class DbHelper extends SQLiteOpenHelper {
     public void insertCCTVLIST(cctv cctv){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-
         contentValues.put(CCTV_NUMBER, cctv.getNumber());
         contentValues.put(CCTV_PW, cctv.getPw());
         contentValues.put(CCTV_NAME, cctv.getName());
         contentValues.put(CCTV_PLACE, cctv.getPlace());
         contentValues.put(CCTV_SPECIAL, cctv.getSpecial());
-
         db.insert(CCTVLIST,null, contentValues);
-        db.update(CCTVLIST, contentValues, CCTV_NUMBER, null);
         db.close();
     }
     public void deleteCCTVLISTById(cctv cctv) {
@@ -94,8 +91,9 @@ public class DbHelper extends SQLiteOpenHelper {
             cctv.setPlace(cursor.getString(cursor.getColumnIndex(CCTV_PLACE)));
             cctv.setSpecial(cursor.getString(cursor.getColumnIndex(CCTV_SPECIAL)));
             cctvlist.add(cctv);
-
         }
+        cursor.close();
+        db.close();
         return  cctvlist;
     }
 }
