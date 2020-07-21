@@ -1,4 +1,4 @@
-package com.hanium.cctv.model;
+package com.hanium.cctv.cctv;
 
 public class cctv {
 

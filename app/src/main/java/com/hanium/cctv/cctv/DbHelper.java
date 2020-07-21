@@ -1,13 +1,10 @@
-package com.hanium.cctv.util;
+package com.hanium.cctv.cctv;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
-import com.hanium.cctv.model.cctv;
 
 import java.util.ArrayList;
 
@@ -81,7 +78,6 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
     }
     public ArrayList<cctv> getCCTVLIST(){
-        Log.d("@@@@", "in getCCTVLIST!");
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<cctv> cctvlist = new ArrayList<>();
         cctv cctv;

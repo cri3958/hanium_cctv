@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.hanium.cctv.Login.LoginActivity;
-import com.hanium.cctv.function.activity_list_of_cctv;
+import com.hanium.cctv.cctv.activity_list_of_cctv;
 
 public class MainActivity extends AppCompatActivity {
 

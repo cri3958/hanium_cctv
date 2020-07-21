@@ -1,4 +1,4 @@
-package com.hanium.cctv;
+package com.hanium.cctv.cctv;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.hanium.cctv.model.cctv;
+import com.hanium.cctv.R;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -83,7 +83,7 @@ public class CCTVAdapter extends ArrayAdapter<cctv> {
     }
 
     @Override
-    public com.hanium.cctv.model.cctv getItem(int position) {
+    public com.hanium.cctv.cctv.cctv getItem(int position) {
         return cctvlist.get(position);
     }
 

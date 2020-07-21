@@ -32,7 +32,7 @@
             android:configChanges="screenSize|orientation"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".function.activity_list_of_cctv"
+            android:name=".cctv.activity_list_of_cctv"
             android:configChanges="screenSize|orientation"
             android:screenOrientation="portrait"></activity>
     </application>
