@@ -13,9 +13,7 @@ import com.hanium.cctv.Login.LoginActivity;
 import com.hanium.cctv.function.activity_list_of_cctv;
 
 public class MainActivity extends AppCompatActivity {
-    /*0605 어플시작시 인터넷 연결여부 체크,아이콘일단 변경
-     * 아이콘 출처 : https://www.flaticon.com/kr/free-icon/security-camera_2933760?term=cctv&page=1&position=1
-     * 0608 회원가입 끝나면 finish()로*/
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, activity_list_of_cctv.class);
                 startActivity(intent);
+                finish();
             }
         });
 

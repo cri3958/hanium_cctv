@@ -2,8 +2,10 @@ package com.hanium.cctv.function;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.SparseBooleanArray;
 import android.view.ActionMode;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
@@ -11,10 +13,12 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.hanium.cctv.CCTVAdapter;
 import com.hanium.cctv.R;
+import com.hanium.cctv.model.cctv;
 import com.hanium.cctv.util.DbHelper;
+
+import java.util.ArrayList;
 
 public class activity_list_of_cctv extends AppCompatActivity {
     private Context context = this;
@@ -22,8 +26,6 @@ public class activity_list_of_cctv extends AppCompatActivity {
     private CCTVAdapter adapter;
     private DbHelper db;
     private int listposition = 0;
-
-    private com.hanium.cctv.model.cctv cctv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +36,15 @@ public class activity_list_of_cctv extends AppCompatActivity {
     }
 
     private void initAll() {
-//        setupAdapter();
+        setupAdapter();
         setupListViewMultiSelect();
         setupCustomDialog();
     }
 
     private void setupAdapter() {
         db = new DbHelper(context);
-        listView = findViewById(R.id.listview_cctvlist);
-        adapter = new CCTVAdapter(activity_list_of_cctv.this, listView, R.layout.cctvlist_item_gridview, db.getCCTVLIST());
+        listView = (ListView) findViewById(R.id.listview_cctvlist);
+        adapter = new CCTVAdapter(activity_list_of_cctv.this, listView, R.layout.listview_cctvlist_adapter, db.getCCTVLIST());
         listView.setAdapter(adapter);
     }
 
@@ -53,20 +55,15 @@ public class activity_list_of_cctv extends AppCompatActivity {
             public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
                 listposition = position;
                 final int checkedCount = listView.getCheckedItemCount();
-                FloatingActionButton btn_del_cctvlist = findViewById(R.id.fab_del_cctvlist);
-                FloatingActionButton btn_add_cctvlist = findViewById(R.id.fab_add_cctvlist);
-                if (checkedCount == 0) {
-                    btn_del_cctvlist.setVisibility(View.INVISIBLE);
-                    btn_add_cctvlist.setVisibility(View.VISIBLE);
-                } else {
-                    btn_del_cctvlist.setVisibility(View.VISIBLE);
-                    btn_add_cctvlist.setVisibility(View.INVISIBLE);
-                }
+                mode.setTitle(checkedCount + "개 선택됨");
+                if (checkedCount == 0) mode.finish();
             }
 
             @Override
             public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                return false;
+                MenuInflater menuInflater = mode.getMenuInflater();
+                menuInflater.inflate(R.menu.toolbar_action_mode, menu);
+                return true;
             }
 
             @Override
@@ -76,7 +73,26 @@ public class activity_list_of_cctv extends AppCompatActivity {
 
             @Override
             public boolean onActionItemClicked(final ActionMode mode, MenuItem item) {
-                return false;
+                switch (item.getItemId()) {
+                    case R.id.action_delete:
+                        ArrayList<cctv> removelist = new ArrayList<>();
+                        SparseBooleanArray checkedItems = listView.getCheckedItemPositions();
+                        for (int i = 0; i < checkedItems.size(); i++) {
+                            int key = checkedItems.keyAt(i);
+                            if (checkedItems.get(key)) {
+                                db.deleteCCTVLISTById(adapter.getItem(key));
+                                removelist.add(adapter.getCctvlist().get(key));
+                            }
+                        }
+                        adapter.getCctvlist().removeAll(removelist);
+                        db.updateCCTVLIST(adapter.getCctv());
+                        adapter.notifyDataSetChanged();
+                        mode.finish();
+                        return true;
+
+                    default:
+                        return false;
+                }
             }
 
             @Override

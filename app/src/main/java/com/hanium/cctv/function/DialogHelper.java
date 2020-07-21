@@ -1,6 +1,7 @@
 package com.hanium.cctv.function;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import com.hanium.cctv.util.DbHelper;
 public class DialogHelper {
 
     public static void getAddcctvlistDialog(final Activity activity, final View cctvLayout, final CCTVAdapter adapter) {
+        Log.d("@@", "너는 안들어왔지?2");
         final cctv cctv = new cctv();
         //MakeCCTVlist();
 
@@ -52,24 +54,24 @@ public class DialogHelper {
             @Override
             public void onClick(View view) {
                 if (true) { //번호랑 비번 검사
+                    DbHelper dbHelper = new DbHelper(activity);
                     cctv.setNumber(text_cctvnum.getText().toString());
                     cctv.setPw(text_cctvpw.getText().toString());
                     cctv.setName(text_name.getText().toString());
                     cctv.setPlace(text_place.getText().toString());
                     cctv.setSpecial(text_special.getText().toString());
-
-                    DbHelper dbHelper = new DbHelper(activity);
                     dbHelper.insertCCTVLIST(cctv);
 
-                    //adapter.clear();
-                    //adapter.addAll(dbHelper.getCCTVLIST());
-                    //adapter.notifyDataSetChanged();
+                    adapter.clear();
+                    adapter.addAll(dbHelper.getCCTVLIST());
+                    adapter.notifyDataSetChanged();
 
                     text_cctvnum.getText().clear();
                     text_cctvpw.getText().clear();
                     text_name.getText().clear();
                     text_place.getText().clear();
                     text_special.getText().clear();
+                    text_cctvnum.requestFocus();
                     dialog.dismiss();
                 }
             }

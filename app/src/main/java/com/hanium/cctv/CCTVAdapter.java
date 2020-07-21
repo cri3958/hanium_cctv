@@ -1,6 +1,7 @@
 package com.hanium.cctv;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,9 @@ public class CCTVAdapter extends ArrayAdapter<cctv> {
         mListView = listView;
         mResource = resource;
         cctvlist = objects;
+        Log.d("@@@@", "bf in get VIEW");
     }
+
     @NonNull
     @Override
     public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
@@ -44,14 +47,14 @@ public class CCTVAdapter extends ArrayAdapter<cctv> {
         String Name = Objects.requireNonNull(getItem(position)).getName();
         String Place= Objects.requireNonNull(getItem(position)).getPlace();
         String Special = Objects.requireNonNull(getItem(position)).getSpecial();
-
+        Log.d("@@@", "in getViewwwwwwww!");//왜 안들어올까?
         cctv = new cctv(Num, pw, Name, Place, Special);
 
         final CCTVViewHolder holder;
 
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(mActivity);
-            convertView = inflater.inflate(R.layout.cctvlist_item_gridview, parent, false);
+            convertView = inflater.inflate(mResource, parent, false);
             holder = new CCTVViewHolder();
             holder.cctvlistName = (TextView) convertView.findViewById(R.id.cctvlist_item_name);
             holder.cctvlistNum = (TextView) convertView.findViewById(R.id.cctvlist_item_num);
@@ -83,12 +86,12 @@ public class CCTVAdapter extends ArrayAdapter<cctv> {
 
     @Override
     public int getCount() {
-        return 0;
+        return cctvlist.size();
     }
 
     @Override
-    public com.hanium.cctv.model.cctv getItem(int i) {
-        return null;
+    public com.hanium.cctv.model.cctv getItem(int position) {
+        return cctvlist.get(position);
     }
 
     @Override

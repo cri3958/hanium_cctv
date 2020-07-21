@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.hanium.cctv.model.cctv;
 
@@ -56,15 +57,17 @@ public class DbHelper extends SQLiteOpenHelper {
         contentValues.put(CCTV_NAME, cctv.getName());
         contentValues.put(CCTV_PLACE, cctv.getPlace());
         contentValues.put(CCTV_SPECIAL, cctv.getSpecial());
-        db.insert(CCTVLIST,null, contentValues);
+        db.insert(CCTVLIST, null, contentValues);
         db.close();
     }
-    public void deleteCCTVLISTById(cctv cctv) {
+
+    public void deleteCCTVLISTById(cctv cctv) { //sql지우기
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(CCTVLIST, CCTV_ID + " = ? ", new String[]{String.valueOf(cctv.getId())});
         db.close();
     }
-    public void updateCCTVLIST(cctv cctv) {
+
+    public void updateCCTVLIST(cctv cctv) { //지운후에 업데이트하기
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
@@ -78,10 +81,11 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
     }
     public ArrayList<cctv> getCCTVLIST(){
+        Log.d("@@@@", "in getCCTVLIST!");
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<cctv> cctvlist = new ArrayList<>();
         cctv cctv;
-        Cursor cursor = db.rawQuery("SELECT * FROM ORDER_T",null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + CCTVLIST + " ORDER BY " + CCTV_ID, null);
         while (cursor.moveToNext()){
             cctv = new cctv();
             cctv.setId(cursor.getInt(cursor.getColumnIndex(CCTV_ID)));
