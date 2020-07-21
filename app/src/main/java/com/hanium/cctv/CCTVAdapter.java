@@ -1,7 +1,6 @@
 package com.hanium.cctv;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,18 +24,12 @@ public class CCTVAdapter extends ArrayAdapter<cctv> {
     private cctv cctv;
     private ListView mListView;
 
-    private class CCTVViewHolder{
-        TextView cctvlistNum,cctvlistName;
-        ImageView cctvlistInfo, cctvlistPlay;
-    }
-
     public CCTVAdapter(Activity activity, ListView listView,  int resource, ArrayList<cctv> objects) {
         super(activity, resource, objects);
         mActivity = activity;
         mListView = listView;
         mResource = resource;
         cctvlist = objects;
-        Log.d("@@@@", "bf in get VIEW");
     }
 
     @NonNull
@@ -47,7 +40,7 @@ public class CCTVAdapter extends ArrayAdapter<cctv> {
         String Name = Objects.requireNonNull(getItem(position)).getName();
         String Place= Objects.requireNonNull(getItem(position)).getPlace();
         String Special = Objects.requireNonNull(getItem(position)).getSpecial();
-        Log.d("@@@", "in getViewwwwwwww!");//왜 안들어올까?
+
         cctv = new cctv(Num, pw, Name, Place, Special);
 
         final CCTVViewHolder holder;
@@ -58,30 +51,30 @@ public class CCTVAdapter extends ArrayAdapter<cctv> {
             holder = new CCTVViewHolder();
             holder.cctvlistName = (TextView) convertView.findViewById(R.id.cctvlist_item_name);
             holder.cctvlistNum = (TextView) convertView.findViewById(R.id.cctvlist_item_num);
-            holder.cctvlistInfo = (ImageView) convertView.findViewById(R.id.cctvlist_item_info);
             holder.cctvlistPlay = (ImageView) convertView.findViewById(R.id.cctvlist_item_play);
+            holder.cctvlistPlace = (TextView) convertView.findViewById(R.id.cctvlist_item_place);
+            holder.cctvlistSpecial = (TextView) convertView.findViewById(R.id.cctvlist_item_speical);
             convertView.setTag(holder);
         } else
             holder = (CCTVViewHolder) convertView.getTag();
 
         holder.cctvlistName.setText(cctv.getName());
         holder.cctvlistNum.setText(cctv.getNumber());
-
-        holder.cctvlistInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+        holder.cctvlistPlace.setText(cctv.getPlace());
+        holder.cctvlistSpecial.setText(cctv.getSpecial());
 
         holder.cctvlistPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //cctv.getNumber() 넘겨주면서 동영상 액티비티 시작
             }
         });
-
         return convertView;
+    }
+
+    private class CCTVViewHolder {
+        TextView cctvlistNum, cctvlistName, cctvlistPlace, cctvlistSpecial;
+        ImageView cctvlistPlay;
     }
 
     @Override

@@ -15,59 +15,77 @@
         card_view:cardElevation="5dp">
 
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:orientation="horizontal">
+            android:background="@drawable/card_background_selector"
+            android:descendantFocusability="afterDescendants"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp">
 
             <TextView
                 android:id="@+id/cctvlist_item_num"
                 android:layout_width="80dp"
                 android:layout_height="40dp"
-                android:layout_weight="2"
                 android:background="@drawable/card_background_selector"
                 android:gravity="center"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:text="cctvnum"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/cctvlist_item_name"
-                android:layout_width="180dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_weight="8"
                 android:background="@drawable/card_background_selector"
                 android:gravity="center"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:text="테스트cctv"
+                android:layout_alignParentTop="true"
+                android:layout_toStartOf="@id/cctvlist_item_play"
+                android:layout_toEndOf="@id/cctvlist_item_num"
                 android:textColor="#000000" />
-
-            <ImageView
-                android:id="@+id/cctvlist_item_info"
-                android:layout_width="35dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="@drawable/card_background_selector"
-                android:paddingTop="6dp"
-                android:paddingBottom="6dp"
-                app:srcCompat="@drawable/info" />
 
             <ImageView
                 android:id="@+id/cctvlist_item_play"
                 android:layout_width="35dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:layout_weight="1"
                 android:background="@drawable/card_background_selector"
                 android:paddingTop="6dp"
                 android:paddingBottom="6dp"
+
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
                 app:srcCompat="@drawable/play" />
-        </LinearLayout>
+
+            <TextView
+                android:id="@+id/cctvlist_item_place"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/cctvlist_item_num"
+                android:background="@drawable/card_background_selector"
+                android:gravity="center"
+                android:text="서울특별시 강서구 등촌로 53길 10"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/cctvlist_item_speical"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/cctvlist_item_place"
+                android:background="@drawable/card_background_selector"
+                android:gravity="center"
+                android:text="종합감기"
+                android:textColor="#000000" />
+        </RelativeLayout>
 
 
     </androidx.cardview.widget.CardView>

@@ -1,7 +1,6 @@
 package com.hanium.cctv.function;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,9 +16,7 @@ import com.hanium.cctv.util.DbHelper;
 public class DialogHelper {
 
     public static void getAddcctvlistDialog(final Activity activity, final View cctvLayout, final CCTVAdapter adapter) {
-        Log.d("@@", "너는 안들어왔지?2");
         final cctv cctv = new cctv();
-        //MakeCCTVlist();
 
         FloatingActionButton add_cctvlist = activity.findViewById(R.id.fab_add_cctvlist);
 

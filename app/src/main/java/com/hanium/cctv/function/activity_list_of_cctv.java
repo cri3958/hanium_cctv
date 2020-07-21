@@ -25,7 +25,6 @@ public class activity_list_of_cctv extends AppCompatActivity {
     private ListView listView;
     private CCTVAdapter adapter;
     private DbHelper db;
-    private int listposition = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +52,6 @@ public class activity_list_of_cctv extends AppCompatActivity {
         listView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             @Override
             public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-                listposition = position;
                 final int checkedCount = listView.getCheckedItemCount();
                 mode.setTitle(checkedCount + "개 선택됨");
                 if (checkedCount == 0) mode.finish();
