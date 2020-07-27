@@ -13,8 +13,9 @@
         android:roundIcon="@drawable/cctv"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".record.RecordActivity"></activity>
         <activity
-            android:name=".Login.LoginActivity"
+            android:name=".others.SplashActivity"
             android:configChanges="screenSize|orientation"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -24,17 +25,29 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".cctv.cctv_watch"
+            android:configChanges="screenSize|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".others.SettingActivity"
+            android:configChanges="screenSize|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Login.LoginActivity"
+            android:configChanges="screenSize|orientation"
+            android:screenOrientation="portrait"></activity>
+        <activity
             android:name=".Login.RegisterActivity"
             android:configChanges="screenSize|orientation"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name=".others.MainActivity"
             android:configChanges="screenSize|orientation"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".cctv.activity_list_of_cctv"
+            android:name=".cctv.CctvActivity"
             android:configChanges="screenSize|orientation"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -49,11 +49,11 @@ public class CCTVAdapter extends ArrayAdapter<cctv> {
             LayoutInflater inflater = LayoutInflater.from(mActivity);
             convertView = inflater.inflate(mResource, parent, false);
             holder = new CCTVViewHolder();
-            holder.cctvlistName = (TextView) convertView.findViewById(R.id.cctvlist_item_name);
-            holder.cctvlistNum = (TextView) convertView.findViewById(R.id.cctvlist_item_num);
-            holder.cctvlistPlay = (ImageView) convertView.findViewById(R.id.cctvlist_item_play);
-            holder.cctvlistPlace = (TextView) convertView.findViewById(R.id.cctvlist_item_place);
-            holder.cctvlistSpecial = (TextView) convertView.findViewById(R.id.cctvlist_item_speical);
+            holder.cctvlistName = convertView.findViewById(R.id.cctvlist_item_name);
+            holder.cctvlistNum = convertView.findViewById(R.id.cctvlist_item_num);
+            holder.cctvlistPlay = convertView.findViewById(R.id.cctvlist_item_play);
+            holder.cctvlistPlace = convertView.findViewById(R.id.cctvlist_item_place);
+            holder.cctvlistSpecial = convertView.findViewById(R.id.cctvlist_item_speical);
             convertView.setTag(holder);
         } else
             holder = (CCTVViewHolder) convertView.getTag();
@@ -66,7 +66,7 @@ public class CCTVAdapter extends ArrayAdapter<cctv> {
         holder.cctvlistPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //cctv.getNumber() 넘겨주면서 동영상 액티비티 시작
+
             }
         });
         return convertView;

@@ -22,8 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
-import com.hanium.cctv.MainActivity;
 import com.hanium.cctv.R;
+import com.hanium.cctv.others.MainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,16 +33,18 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class LoginActivity extends AppCompatActivity { //http://leehojin0207.dothome.co.kr/myadmin/
+//http://leehojin0207.dothome.co.kr/myadmin/
+//test11@1111
+public class LoginActivity extends AppCompatActivity {
     private EditText et_id, et_pass;
-    private Button btn_login,btn_register;
+    private Button btn_login, btn_register;
     private CheckBox chk_autologin;
     String fileName = "data_autologin.txt";
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK){
+        if (resultCode == RESULT_OK) {
             et_id.setText(data.getStringExtra("id"));
             et_pass.setText(data.getStringExtra("pass"));
             chk_autologin.setChecked(true);
