@@ -22,7 +22,7 @@ import com.hanium.cctv.R;
 
 import java.util.ArrayList;
 
-public class activity_list_of_cctv extends AppCompatActivity {
+public class CctvActivity extends AppCompatActivity {
     private Context context = this;
     private ListView listView;
     private CCTVAdapter adapter;
@@ -31,7 +31,7 @@ public class activity_list_of_cctv extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_of_cctv);
+        setContentView(R.layout.activity_cctv);
 
         initAll();
     }
@@ -45,7 +45,7 @@ public class activity_list_of_cctv extends AppCompatActivity {
     private void setupAdapter() {
         db = new DbHelper(context);
         listView = (ListView) findViewById(R.id.listview_cctvlist);
-        adapter = new CCTVAdapter(activity_list_of_cctv.this, listView, R.layout.listview_cctvlist_adapter, db.getCCTVLIST());
+        adapter = new CCTVAdapter(CctvActivity.this, listView, R.layout.listview_cctvlist_adapter, db.getCCTVLIST());
         listView.setAdapter(adapter);
     }
 
@@ -103,7 +103,7 @@ public class activity_list_of_cctv extends AppCompatActivity {
 
     private void setupCustomDialog() {
         final View cctvLayout = getLayoutInflater().inflate(R.layout.addwork_cctvlist, null);
-        DialogHelper.getAddcctvlistDialog(activity_list_of_cctv.this, cctvLayout, adapter);
+        DialogHelper.getAddcctvlistDialog(CctvActivity.this, cctvLayout, adapter);
     }
 
     public static class DialogHelper {
@@ -122,7 +122,7 @@ public class activity_list_of_cctv extends AppCompatActivity {
             final TextView cancel = cctvLayout.findViewById(R.id.btn_cctvlist_cancel);
 
             AlertDialog.Builder dlg = new AlertDialog.Builder(activity);
-            dlg.setTitle("cctv 추가하기");
+            //dlg.setTitle("cctv 추가하기");
             dlg.setView(cctvLayout);
             dlg.setCancelable(false);
             final AlertDialog dialog = dlg.create();
