@@ -13,13 +13,16 @@ public class RegisterRequest extends StringRequest {
     final static  private String URL="http://leehojin0207.dothome.co.kr/Register.php";
     private Map<String,String>map;
 
-    public RegisterRequest(String userID, String userPassword, String userName, Response.Listener<String>listener){
-        super(Method.POST,URL,listener,null);//위 url에 post방식으로 값을 전송
+    public RegisterRequest(String mem_id, String mem_pw, String mem_name, String mem_phone, String mem_emergency, String mem_imagedata, Response.Listener<String> listener) {
+        super(Method.POST, URL, listener, null);//위 url에 post방식으로 값을 전송
 
-        map=new HashMap<>();
-        map.put("userID",userID);
-        map.put("userPassword",userPassword);
-        map.put("userName",userName);
+        map = new HashMap<>();
+        map.put("mem_id", mem_id);
+        map.put("mem_pw", mem_pw);
+        map.put("mem_name", mem_name);
+        map.put("mem_phone", mem_phone);
+        map.put("mem_emergency", mem_emergency);
+        map.put("mem_imagedata", mem_imagedata);
     }
 
     @Override

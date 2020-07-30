@@ -12,11 +12,11 @@ public class ValidateRequest extends StringRequest {
     final static private String URL="http://leehojin0207.dothome.co.kr/UserValidate.php";
     private Map<String,String> map;
 
-    public ValidateRequest(String userID, Response.Listener<String>listener){
-        super(Method.POST,URL,listener,null);
+    public ValidateRequest(String mem_id, Response.Listener<String> listener) {
+        super(Method.POST, URL, listener, null);
 
-        map=new HashMap<>();
-        map.put("userID",userID);
+        map = new HashMap<>();
+        map.put("mem_id", mem_id);
     }
 
     @Override

@@ -80,8 +80,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (CheckInternetState()) {
-                    final String userID = et_id.getText().toString();
-                    String userPass = et_pass.getText().toString();
+                    final String mem_id = et_id.getText().toString();
+                    String mem_pw = et_pass.getText().toString();
 
                     Response.Listener<String> responseListener = new Response.Listener<String>() {
                         @Override
@@ -90,17 +90,18 @@ public class LoginActivity extends AppCompatActivity {
                                 JSONObject jsonObject = new JSONObject(response);
                                 boolean success = jsonObject.getBoolean("success");
                                 if (success) {
-                                    String userId = jsonObject.getString("userID");
-                                    String userpass = jsonObject.getString("userPassword");
-                                    Log.d("@@@@@", "로그인 성공" + userId + "/" + userpass);
+                                    String mem_id = jsonObject.getString("mem_id");
+                                    String mem_pw = jsonObject.getString("mem_pw");
+                                    String mem_phone = jsonObject.getString("mem_phone");
+                                    Log.d("@@@@@", "로그인 성공" + mem_id + "/" + mem_pw + "/" + mem_phone);
 
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                    intent.putExtra("log", "User");
-                                    intent.putExtra("userID", userID);
+                                    //intent.putExtra("log", "User");
+                                    intent.putExtra("mem_id", mem_id);
                                     if (chk_autologin.isChecked()) { //자동로그인 데이터 저장
                                         try {
                                             FileOutputStream outFs = openFileOutput(fileName, Context.MODE_PRIVATE);
-                                            String str = userId + "@" + userpass;
+                                            String str = mem_id + "@" + mem_pw;
                                             outFs.write(str.getBytes());
                                             outFs.close();
                                         } catch (IOException e) {
@@ -119,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         }
                     };
-                    LoginRequest loginRequest = new LoginRequest(userID, userPass, responseListener);
+                    LoginRequest loginRequest = new LoginRequest(mem_id, mem_pw, responseListener);
                     RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                     queue.add(loginRequest);
                     finish();
@@ -136,7 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                 et_id.setText(fdata[0]);
                 et_pass.setText(fdata[1]);
                 chk_autologin.setChecked(true);
-                btn_login.callOnClick();
+                //btn_login.callOnClick();
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -5,11 +5,14 @@
     <string name="login">로그인</string>
     <string name="register">회원가입</string>
 
-    <string name="id">아이디</string>
-    <string name="idcheck">중복확인</string>
-    <string name="password">비밀번호</string>
-    <string name="passwordcheck">비밀번호확인</string>
-    <string name="name">이름</string>
+    <string name="mem_id">사용자 아이디</string>
+    <string name="mem_idcheck">중복확인</string>
+    <string name="mem_pw">사용자 비밀번호</string>
+    <string name="mem_pwcheck">비밀번호확인</string>
+    <string name="mem_name">사용자 이름</string>
+    <string name="mem_phone">사용자 핸드폰 번호</string>
+    <string name="mem_emergency">보호자 핸드폰 번호</string>
+    <string name="mem_imagedata">사용자 이미지</string>
 
     <string name="btn_cctvcheck">cctv\n확인하기</string>
     <string name="btn_logout">로그아웃</string>
