@@ -92,12 +92,11 @@ public class LoginActivity extends AppCompatActivity {
                                 if (success) {
                                     String mem_id = jsonObject.getString("mem_id");
                                     String mem_pw = jsonObject.getString("mem_pw");
-                                    String mem_phone = jsonObject.getString("mem_phone");
-                                    Log.d("@@@@@", "로그인 성공" + mem_id + "/" + mem_pw + "/" + mem_phone);
+                                    String mem_name = jsonObject.getString("mem_name");
+                                    Log.d("@@@@@", "로그인 성공" + mem_id + "/" + mem_pw);
 
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                    //intent.putExtra("log", "User");
-                                    intent.putExtra("mem_id", mem_id);
+                                    intent.putExtra("mem_name", mem_name);
                                     if (chk_autologin.isChecked()) { //자동로그인 데이터 저장
                                         try {
                                             FileOutputStream outFs = openFileOutput(fileName, Context.MODE_PRIVATE);
@@ -137,7 +136,6 @@ public class LoginActivity extends AppCompatActivity {
                 et_id.setText(fdata[0]);
                 et_pass.setText(fdata[1]);
                 chk_autologin.setChecked(true);
-                //btn_login.callOnClick();
             } catch (IOException e) {
                 e.printStackTrace();
             }

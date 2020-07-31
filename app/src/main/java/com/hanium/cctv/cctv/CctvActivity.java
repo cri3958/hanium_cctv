@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.hanium.cctv.R;
+import com.hanium.cctv.others.DbHelper;
 
 import java.util.ArrayList;
 
@@ -45,7 +46,7 @@ public class CctvActivity extends AppCompatActivity {
     private void setupAdapter() {
         db = new DbHelper(context);
         listView = (ListView) findViewById(R.id.listview_cctvlist);
-        adapter = new CCTVAdapter(CctvActivity.this, listView, R.layout.listview_cctvlist_adapter, db.getCCTVLIST());
+        adapter = new CCTVAdapter(CctvActivity.this, R.layout.listview_cctvlist_adapter, db.getCCTVLIST());
         listView.setAdapter(adapter);
     }
 

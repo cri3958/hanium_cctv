@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,12 +21,10 @@ public class CCTVAdapter extends ArrayAdapter<cctv> {
     private int mResource;
     private ArrayList<cctv> cctvlist;
     private cctv cctv;
-    private ListView mListView;
 
-    public CCTVAdapter(Activity activity, ListView listView,  int resource, ArrayList<cctv> objects) {
+    public CCTVAdapter(Activity activity, int resource, ArrayList<cctv> objects) {
         super(activity, resource, objects);
         mActivity = activity;
-        mListView = listView;
         mResource = resource;
         cctvlist = objects;
     }
@@ -49,21 +46,21 @@ public class CCTVAdapter extends ArrayAdapter<cctv> {
             LayoutInflater inflater = LayoutInflater.from(mActivity);
             convertView = inflater.inflate(mResource, parent, false);
             holder = new CCTVViewHolder();
-            holder.cctvlistName = convertView.findViewById(R.id.cctvlist_item_name);
-            holder.cctvlistNum = convertView.findViewById(R.id.cctvlist_item_num);
-            holder.cctvlistPlay = convertView.findViewById(R.id.cctvlist_item_play);
-            holder.cctvlistPlace = convertView.findViewById(R.id.cctvlist_item_place);
-            holder.cctvlistSpecial = convertView.findViewById(R.id.cctvlist_item_speical);
+            holder.cctvlist_Name = convertView.findViewById(R.id.cctvlist_item_name);
+            holder.cctvlist_Num = convertView.findViewById(R.id.cctvlist_item_num);
+            holder.cctvlist_Play = convertView.findViewById(R.id.cctvlist_item_play);
+            holder.cctvlist_Place = convertView.findViewById(R.id.cctvlist_item_place);
+            holder.cctvlist_Special = convertView.findViewById(R.id.cctvlist_item_speical);
             convertView.setTag(holder);
         } else
             holder = (CCTVViewHolder) convertView.getTag();
 
-        holder.cctvlistName.setText(cctv.getName());
-        holder.cctvlistNum.setText(cctv.getNumber());
-        holder.cctvlistPlace.setText(cctv.getPlace());
-        holder.cctvlistSpecial.setText(cctv.getSpecial());
+        holder.cctvlist_Name.setText(cctv.getName());
+        holder.cctvlist_Num.setText(cctv.getNumber());
+        holder.cctvlist_Place.setText(cctv.getPlace());
+        holder.cctvlist_Special.setText(cctv.getSpecial());
 
-        holder.cctvlistPlay.setOnClickListener(new View.OnClickListener() {
+        holder.cctvlist_Play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -72,9 +69,9 @@ public class CCTVAdapter extends ArrayAdapter<cctv> {
         return convertView;
     }
 
-    private class CCTVViewHolder {
-        TextView cctvlistNum, cctvlistName, cctvlistPlace, cctvlistSpecial;
-        ImageView cctvlistPlay;
+    @Override
+    public cctv getItem(int position) {
+        return cctvlist.get(position);
     }
 
     @Override
@@ -82,18 +79,23 @@ public class CCTVAdapter extends ArrayAdapter<cctv> {
         return cctvlist.size();
     }
 
-    @Override
-    public com.hanium.cctv.cctv.cctv getItem(int position) {
-        return cctvlist.get(position);
+    private class CCTVViewHolder {
+        TextView cctvlist_Num, cctvlist_Name, cctvlist_Place, cctvlist_Special;
+        ImageView cctvlist_Play;
     }
 
     @Override
     public long getItemId(int position) {
         return position;
     }
-    public ArrayList<cctv> getCctvlist() { return cctvlist; }
 
-    public cctv getCctv() { return cctv; }
+    public ArrayList<cctv> getCctvlist() {
+        return cctvlist;
+    }
+
+    public cctv getCctv() {
+        return cctv;
+    }
 
 
 }

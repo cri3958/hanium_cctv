@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        TextView mem_name = (TextView) findViewById(R.id.mem_name);
+        Intent inIntent = getIntent();
+        mem_name.setText(inIntent.getStringExtra("mem_name"));
 
         ImageView btn_cctv = findViewById(R.id.btn_cctv);
         btn_cctv.setOnClickListener(new View.OnClickListener() {
@@ -48,11 +52,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) { //화면회전 방지
         super.onConfigurationChanged(newConfig);
     }
-
 }

@@ -104,7 +104,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/username"
+            android:id="@+id/mem_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="테스트"
