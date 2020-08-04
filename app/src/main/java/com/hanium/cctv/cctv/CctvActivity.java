@@ -10,16 +10,24 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.hanium.cctv.R;
 import com.hanium.cctv.others.DbHelper;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -28,6 +36,7 @@ public class CctvActivity extends AppCompatActivity {
     private ListView listView;
     private CCTVAdapter adapter;
     private DbHelper db;
+    private static boolean check = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +117,7 @@ public class CctvActivity extends AppCompatActivity {
     }
 
     public static class DialogHelper {
-
+        private static boolean check = false;
         public static void getAddcctvlistDialog(final Activity activity, final View cctvLayout, final CCTVAdapter adapter) {
             final cctv cctv = new cctv();
 
@@ -121,6 +130,7 @@ public class CctvActivity extends AppCompatActivity {
             final EditText text_special = cctvLayout.findViewById(R.id.text_cctvlist_special);
             final TextView save = cctvLayout.findViewById(R.id.btn_cctvlist_save);
             final TextView cancel = cctvLayout.findViewById(R.id.btn_cctvlist_cancel);
+            final Button btn_cctvpass = cctvLayout.findViewById(R.id.btn_cctvpass);
 
             AlertDialog.Builder dlg = new AlertDialog.Builder(activity);
             //dlg.setTitle("cctv 추가하기");
@@ -144,7 +154,14 @@ public class CctvActivity extends AppCompatActivity {
             save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (true) { //번호랑 비번 검사
+                    if (text_cctvnum.getText().toString().isEmpty() || text_cctvpw.getText().toString().isEmpty() || text_name.getText().toString().isEmpty() || text_place.getText().toString().isEmpty()) {
+                        Toast.makeText(activity.getApplicationContext(), "정보를 입력해주세요", Toast.LENGTH_SHORT).show();
+                    } else if (!(check)) {
+                        Toast.makeText(activity.getApplicationContext(), "번호와 비밀번호를 확인 해야합니다.", Toast.LENGTH_SHORT).show();
+                    } else if (check) { //번호랑 비번 검사
+                        if (text_special.getText().toString().isEmpty()) {
+                            text_special.setText("특이사항 없음");
+                        }
                         DbHelper dbHelper = new DbHelper(activity);
                         cctv.setNumber(text_cctvnum.getText().toString());
                         cctv.setPw(text_cctvpw.getText().toString());
@@ -165,6 +182,48 @@ public class CctvActivity extends AppCompatActivity {
                         text_cctvnum.requestFocus();
                         dialog.dismiss();
                     }
+                }
+            });
+            btn_cctvpass.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Integer num = Integer.parseInt(text_cctvnum.getText().toString());
+                    Integer pw = Integer.parseInt(text_cctvpw.getText().toString());
+                    String object_num = num.toString();
+                    String object_pw = pw.toString();
+                    Response.Listener<String> responseListener = new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonResponse = new JSONObject(response);
+                                boolean success = jsonResponse.getBoolean("success");
+                                if (success) {
+                                    /*AlertDialog.Builder builder=new AlertDialog.Builder( activity.getApplicationContext());
+                                    AlertDialog dialog=builder.setMessage("확인되었습니다.")
+                                            .setPositiveButton("확인",null)
+                                            .create();
+                                    dialog.show();*/
+                                    Toast.makeText(activity.getApplicationContext(), "확인되었습니다.", Toast.LENGTH_SHORT).show();
+                                    text_cctvnum.setEnabled(false);
+                                    text_cctvpw.setEnabled(false);
+                                    check = true;
+                                    btn_cctvpass.setText("확인됨");
+                                } else {
+                                    Toast.makeText(activity.getApplicationContext(), "정보가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
+                                    /*AlertDialog.Builder builder=new AlertDialog.Builder( activity.getApplicationContext() );
+                                    AlertDialog dialog = builder.setMessage("아이디와 비밀번호가 일치하지 않습니다.")
+                                            .setNegativeButton("확인", null)
+                                            .create();
+                                    dialog.show();*/
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    };
+                    CctvcheckRequest cctvcheckRequest = new CctvcheckRequest(object_num, object_pw, responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(activity.getApplicationContext());
+                    queue.add(cctvcheckRequest);
                 }
             });
         }
