@@ -198,11 +198,6 @@ public class CctvActivity extends AppCompatActivity {
                                 JSONObject jsonResponse = new JSONObject(response);
                                 boolean success = jsonResponse.getBoolean("success");
                                 if (success) {
-                                    /*AlertDialog.Builder builder=new AlertDialog.Builder( activity.getApplicationContext());
-                                    AlertDialog dialog=builder.setMessage("확인되었습니다.")
-                                            .setPositiveButton("확인",null)
-                                            .create();
-                                    dialog.show();*/
                                     Toast.makeText(activity.getApplicationContext(), "확인되었습니다.", Toast.LENGTH_SHORT).show();
                                     text_cctvnum.setEnabled(false);
                                     text_cctvpw.setEnabled(false);
@@ -210,11 +205,6 @@ public class CctvActivity extends AppCompatActivity {
                                     btn_cctvpass.setText("확인됨");
                                 } else {
                                     Toast.makeText(activity.getApplicationContext(), "정보가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
-                                    /*AlertDialog.Builder builder=new AlertDialog.Builder( activity.getApplicationContext() );
-                                    AlertDialog dialog = builder.setMessage("아이디와 비밀번호가 일치하지 않습니다.")
-                                            .setNegativeButton("확인", null)
-                                            .create();
-                                    dialog.show();*/
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

@@ -17,7 +17,7 @@
     <string name="btn_cctvcheck">cctv\n확인하기</string>
     <string name="btn_logout">로그아웃</string>
 
-    <string name="cctvlist_cctvnum">cctv번호 : </string>
+    <string name="cctvlist_cctvnum">cctv아이디 : </string>
     <string name="cctvlist_cctvpw">cctv비밀번호 : </string>
     <string name="cctvlist_name">cctv이름 : </string>
     <string name="cctvlist_place">cctv장소 : </string>

@@ -116,6 +116,23 @@ public class DbHelper extends SQLiteOpenHelper {
         return cctvlist;
     }
 
+    public String[] getCCTV_info(String object_num) {
+        String[] info_cctv = new String[5];
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + CCTVLIST + " WHERE number='" + object_num + "'", null);
+        while (cursor.moveToNext()) {
+            info_cctv[0] = cursor.getString(cursor.getColumnIndex(CCTV_NUMBER));
+            info_cctv[1] = cursor.getString(cursor.getColumnIndex(CCTV_PW));
+            info_cctv[2] = cursor.getString(cursor.getColumnIndex(CCTV_NAME));
+            info_cctv[3] = cursor.getString(cursor.getColumnIndex(CCTV_PLACE));
+            info_cctv[4] = cursor.getString(cursor.getColumnIndex(CCTV_SPECIAL));
+        }
+        cursor.close();
+        db.close();
+        return info_cctv;
+
+    }
+
     public void insertRECORDLIST(record record) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
