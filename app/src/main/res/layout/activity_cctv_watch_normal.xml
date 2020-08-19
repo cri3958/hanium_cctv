@@ -17,10 +17,11 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <VideoView
+    <WebView
         android:id="@+id/normal_cctv_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:foregroundGravity="center"
         android:layout_above="@id/normal_btn_emergency"
         android:layout_below="@+id/normal_text" />
 

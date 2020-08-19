@@ -6,7 +6,7 @@
     tools:context=".others.SplashActivity">
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/splash_image"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
@@ -14,10 +14,10 @@
         android:src="@drawable/hanium_logo" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/splash_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imageView6"
+        android:layout_below="@id/splash_image"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:text="[20_HF169]\n객체 인식을 이용한\n스마트 홈 CCTV"

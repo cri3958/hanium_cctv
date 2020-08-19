@@ -7,13 +7,14 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ValidateRequest extends StringRequest {
+public class DeleteUserRequest extends StringRequest {
 
-    final static private String URL="http://leehojin0207.dothome.co.kr/UserValidate.php";
-    //final static private String URL="http://13.125.249.248/UserValidate.php";
-    private Map<String,String> map;
 
-    public ValidateRequest(String mem_id, Response.Listener<String> listener) {
+    final static private String URL = "http://leehojin0207.dothome.co.kr/DeleteUser.php";
+    //final static  private String URL="http://13.125.249.248/DeleteUser.php";
+    private Map<String, String> map;
+
+    public DeleteUserRequest(String mem_id, Response.Listener<String> listener) {
         super(Method.POST, URL, listener, null);
 
         map = new HashMap<>();

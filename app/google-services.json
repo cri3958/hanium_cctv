@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "15236995992",
+    "firebase_url": "https://hanium-cctv.firebaseio.com",
+    "project_id": "hanium-cctv",
+    "storage_bucket": "hanium-cctv.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15236995992:android:7c5784fb87336eda8c69ed",
+        "android_client_info": {
+          "package_name": "com.hanium.cctv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "15236995992-tspj0milrusp8im2bkbnj3ktb21lnqi3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hanium.cctv",
+            "certificate_hash": "beacb36e415d63e84f6c0f29cbb9ff43a1651535"
+          }
+        },
+        {
+          "client_id": "15236995992-l1627a1seils65uqj0m75c63l3vt74bs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8-DvpzyCHEAZDoInRX9spS9Ozfp8Wc_o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "15236995992-l1627a1seils65uqj0m75c63l3vt74bs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

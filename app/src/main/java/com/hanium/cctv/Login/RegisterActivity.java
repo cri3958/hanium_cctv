@@ -7,7 +7,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -125,7 +124,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Bitmap b = d.getBitmap();
                     //b = resize(b);
                     final String mem_imagedata = getStringFromBitmap(b);
-                    Log.d("mem_imagedata : ", mem_imagedata);
+                    //Log.d("mem_imagedata : ", mem_imagedata);
                     Response.Listener<String> responseListener = new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {

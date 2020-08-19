@@ -11,6 +11,7 @@ import java.util.Map;
 public class CctvcheckRequest extends StringRequest {
 
     final static private String URL = "http://leehojin0207.dothome.co.kr/Cctvcheck.php";
+    //final static private String URL = "http://13.125.249.248/Cctvcheck.php";
     private Map<String, String> map;
 
     public CctvcheckRequest(String object_id, String object_pw, Response.Listener<String> listener) {

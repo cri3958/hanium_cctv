@@ -8,14 +8,15 @@
 
 
     <TableRow
+        android:id="@+id/Setting_1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/edge">
 
         <TextView
-            android:id="@+id/Setting_1"
+
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_marginStart="10sp"
             android:gravity="center_vertical"
             android:text="@string/Setting_1"
@@ -25,14 +26,15 @@
     </TableRow>
 
     <TableRow
+        android:id="@+id/Setting_2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/edge">
 
         <TextView
-            android:id="@+id/Setting_2"
+
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_marginStart="10sp"
             android:gravity="center_vertical"
             android:text="@string/Setting_2"
@@ -42,14 +44,15 @@
     </TableRow>
 
     <TableRow
+        android:id="@+id/Setting_3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/edge">
 
         <TextView
-            android:id="@+id/Setting_3"
+
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_marginStart="10sp"
             android:gravity="center_vertical"
             android:text="@string/Setting_3"

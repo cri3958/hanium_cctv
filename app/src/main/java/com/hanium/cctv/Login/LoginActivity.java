@@ -97,6 +97,8 @@ public class LoginActivity extends AppCompatActivity {
 
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     intent.putExtra("mem_name", mem_name);
+                                    intent.putExtra("mem_id", mem_id);
+                                    intent.putExtra("mem_pw", mem_pw);
                                     if (chk_autologin.isChecked()) { //자동로그인 데이터 저장
                                         try {
                                             FileOutputStream outFs = openFileOutput(fileName, Context.MODE_PRIVATE);
@@ -107,12 +109,11 @@ public class LoginActivity extends AppCompatActivity {
                                             e.printStackTrace();
                                         }
                                     }
-
                                     startActivity(intent);
+                                    finish();
 
                                 } else {
                                     Toast.makeText(getApplicationContext(), "로그인 실패", Toast.LENGTH_SHORT).show();
-                                    return;
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -122,7 +123,6 @@ public class LoginActivity extends AppCompatActivity {
                     LoginRequest loginRequest = new LoginRequest(mem_id, mem_pw, responseListener);
                     RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                     queue.add(loginRequest);
-                    finish();
                 }
             }
         });

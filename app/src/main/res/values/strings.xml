@@ -31,4 +31,8 @@
     <string name="Setting_2">회원정보 수정</string>
     <string name="Setting_3">회원탈퇴</string>
 
+    <string name="update">회원정보 수정</string>
+
+    <string name="default_notification_channel_id">channel_01</string>
+
 </resources>

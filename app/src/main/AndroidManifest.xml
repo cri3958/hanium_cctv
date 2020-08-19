@@ -13,7 +13,9 @@
         android:roundIcon="@drawable/cctv"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".cctv.cctv_watch_emergency"></activity>
+        <activity android:name=".Login.UpdateUserActivity" />
+
+        <activity android:name=".cctv.cctv_watch_emergency" />
         <activity android:name=".cctv.cctv_watch_normal" />
         <activity android:name=".record.RecordActivity" />
         <activity
@@ -46,6 +48,24 @@
             android:name=".cctv.CctvActivity"
             android:configChanges="screenSize|orientation"
             android:screenOrientation="portrait" />
+
+        <service
+            android:name=".others.MyFireBaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/cctv" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
     </application>
 
 </manifest>

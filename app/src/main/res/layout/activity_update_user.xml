@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login.UpdateUserActivity">
+
+    <EditText
+        android:id="@+id/update_id"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:hint="@string/mem_id"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/update_pass"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/mem_pw"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/update_id"
+        app:layout_constraintStart_toStartOf="@+id/update_id"
+        app:layout_constraintTop_toBottomOf="@+id/update_id" />
+
+    <EditText
+        android:id="@+id/update_name"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/mem_name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/update_pass"
+        app:layout_constraintStart_toStartOf="@+id/update_pass"
+        app:layout_constraintTop_toBottomOf="@+id/update_pass" />
+
+    <EditText
+        android:id="@+id/update_phone"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/mem_phone"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/update_name"
+        app:layout_constraintStart_toStartOf="@+id/update_name"
+        app:layout_constraintTop_toBottomOf="@+id/update_name" />
+
+    <EditText
+        android:id="@+id/update_emergency"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/mem_emergency"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/update_phone"
+        app:layout_constraintStart_toStartOf="@+id/update_phone"
+        app:layout_constraintTop_toBottomOf="@+id/update_phone" />
+
+    <ImageView
+        android:id="@+id/update_imagedata"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="@+id/update_emergency"
+        app:layout_constraintStart_toStartOf="@+id/update_emergency"
+        app:layout_constraintTop_toBottomOf="@+id/update_emergency"
+        app:srcCompat="@mipmap/search" />
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/update"
+        app:layout_constraintEnd_toEndOf="@+id/update_imagedata"
+        app:layout_constraintStart_toStartOf="@+id/update_imagedata"
+        app:layout_constraintTop_toBottomOf="@+id/update_imagedata" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
