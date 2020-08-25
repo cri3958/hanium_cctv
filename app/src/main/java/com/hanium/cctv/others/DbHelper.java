@@ -177,7 +177,7 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<record> recordlist = new ArrayList<>();
         record record;
-        Cursor cursor = db.rawQuery("SELECT * FROM " + RECORDLIST + " ORDER BY " + RECORD_ID, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + RECORDLIST + " ORDER BY " + RECORD_ID + " DESC", null);
         while (cursor.moveToNext()) {
             record = new record();
             record.setId(cursor.getInt(cursor.getColumnIndex(RECORD_ID)));

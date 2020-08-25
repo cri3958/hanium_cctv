@@ -23,7 +23,7 @@ import java.util.Date;
 public class cctv_watch_normal extends AppCompatActivity {
     private WebView webView;
     private String url = "http://54.180.149.38/play.html";
-    private String reason = "보호자에 의한 응급신고";
+    private String reason = "보호자의 응급신고";
 
     @SuppressLint("MissingPermission")
     @Override
