@@ -133,13 +133,23 @@ public class DbHelper extends SQLiteOpenHelper {
 
     }
 
-    public void insertRECORDLIST(record record) {
+    public Boolean checkCCTVLIST(String num) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + CCTVLIST + " WHERE number='" + num + "'", null);
+        if (cursor.getCount() == 0)
+            return false;
+        cursor.close();
+        db.close();
+        return true;
+    }
+
+    public void insertRECORDLIST(String date, String object_num, String mem_name, String reason) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(RECORD_date, record.getDate());
-        contentValues.put(RECORD_object_num, record.getObject_num());
-        contentValues.put(RECORD_mem_name, record.getMem_name());
-        contentValues.put(RECORD_reason, record.getReason());
+        contentValues.put(RECORD_date, date);
+        contentValues.put(RECORD_object_num, object_num);
+        contentValues.put(RECORD_mem_name, mem_name);
+        contentValues.put(RECORD_reason, reason);
         db.insert(RECORDLIST, null, contentValues);
         db.close();
     }

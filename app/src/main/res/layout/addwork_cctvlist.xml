@@ -72,6 +72,7 @@
             android:id="@+id/text_cctvlist_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:hint="홍길동"
             android:ems="11"
             android:inputType="textPersonName"/>
     </LinearLayout>
@@ -93,6 +94,7 @@
             android:id="@+id/text_cctvlist_place"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:hint="서울특별시 영등포구 ~~~"
             android:ems="11"
             android:inputType="textPersonName"/>
     </LinearLayout>
@@ -114,6 +116,7 @@
             android:id="@+id/text_cctvlist_special"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:hint="고혈압, 당뇨, ~~~"
             android:ems="11"
             android:inputType="textPersonName"/>
     </LinearLayout>

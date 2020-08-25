@@ -1,5 +1,6 @@
 package com.hanium.cctv.others;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -36,26 +37,37 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 
-        String chId = "test";
-        Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION); // 알림 왔을때 사운드.
+        String[] info = body.split("@");
+        DbHelper dbHelper = new DbHelper(this);
+        Boolean checkresult = dbHelper.checkCCTVLIST(info[0]);
 
-        NotificationCompat.Builder notiBuilder = new NotificationCompat.Builder(this, chId)
-                .setSmallIcon(R.drawable.cctv)
-                .setContentTitle("응급상황 감지")
-                .setContentText("확인바랍니다.")
-                .setAutoCancel(true)
-                .setSound(soundUri)
-                .setContentIntent(pendingIntent);
+        if (checkresult) {
+            String chId = "test";
 
-        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION); // 알림 왔을때 사운드.
 
+            NotificationCompat.Builder notiBuilder = new NotificationCompat.Builder(this, chId)
+                    .setSmallIcon(R.drawable.cctv)
+                    .setContentTitle("응급상황 감지")
+                    .setContentText("확인바랍니다.")
+                    .setAutoCancel(true)
+                    .setSound(soundUri)
+                    .setContentIntent(pendingIntent);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            String chName = "ch name";
-            NotificationChannel channel = new NotificationChannel(chId, chName, NotificationManager.IMPORTANCE_HIGH);
-            manager.createNotificationChannel(channel);
+            NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); // 10초뒤에 알림이 안없어졌으면 강제로 화면 전환기능 추가 >> 어떻게....
+
+            Notification notification = notiBuilder.build();
+            notification.sound = Uri.parse("android.resource://" + this.getPackageName() + "/" + R.raw.test_sound);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                String chName = "ch name";
+                NotificationChannel channel = new NotificationChannel(chId, chName, NotificationManager.IMPORTANCE_HIGH);
+                manager.createNotificationChannel(channel);
+            }
+            manager.notify(0, notiBuilder.build());
+        } else {
+            Log.d("False route", "get miss notification");
         }
-        manager.notify(0, notiBuilder.build());
 
     }
 }
