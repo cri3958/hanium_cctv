@@ -40,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     private CheckBox chk_autologin;
     String fileName = "data_autologin.txt";
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
