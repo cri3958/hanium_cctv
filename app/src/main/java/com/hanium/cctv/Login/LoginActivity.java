@@ -33,8 +33,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-//http://leehojin0207.dothome.co.kr/myadmin/
-//test11@1111
+
 public class LoginActivity extends AppCompatActivity {
     private EditText et_id, et_pass;
     private Button btn_login, btn_register;
