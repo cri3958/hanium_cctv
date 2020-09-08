@@ -7,6 +7,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,16 +48,16 @@ public class RegisterActivity extends AppCompatActivity {
         et_passck = findViewById(R.id.et_passck);
         et_phone = findViewById(R.id.et_phone);
         et_emergency = findViewById(R.id.et_emergency);
-        et_imagedata = (ImageView) findViewById(R.id.et_imagedata);
+        //et_imagedata = (ImageView) findViewById(R.id.et_imagedata);
         validateButton = findViewById(R.id.validateButton);
-        et_imagedata.setOnClickListener(new View.OnClickListener() {
+        /*et_imagedata.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
                 startActivityForResult(intent, GET_GALLERY_IMAGE);
             }
-        });
+        });*/
         validateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {//아이디 중복여부체크
@@ -120,10 +121,10 @@ public class RegisterActivity extends AppCompatActivity {
                     final String mem_pwcheck = et_passck.getText().toString();
                     final String mem_phone = et_phone.getText().toString();
                     final String mem_emergency = et_emergency.getText().toString();
-                    d = (BitmapDrawable) ((ImageView) findViewById(R.id.et_imagedata)).getDrawable();
-                    Bitmap b = d.getBitmap();
+                    //d = (BitmapDrawable) ((ImageView) findViewById(R.id.et_imagedata)).getDrawable();
+                    //Bitmap b = d.getBitmap();
                     //b = resize(b);
-                    final String mem_imagedata = getStringFromBitmap(b);
+                    //final String mem_imagedata = getStringFromBitmap(b);
                     //Log.d("mem_imagedata : ", mem_imagedata);
                     Response.Listener<String> responseListener = new Response.Listener<String>() {
                         @Override
@@ -132,6 +133,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 if (mem_pw.equals(mem_pwcheck) && validate) {
                                     JSONObject jsonResponse = new JSONObject(response);
                                     boolean success = jsonResponse.getBoolean("success");
+                                    Log.d("abbc", "TTTTTTT");
                                     if (success) {
                                         Toast.makeText(getApplicationContext(), "회원가입 성공", Toast.LENGTH_SHORT).show(); //로그인창에 아이디와 비번 바로입력
                                         Intent outIntent = new Intent(getApplicationContext(), LoginActivity.class);
@@ -151,7 +153,8 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     };
                     if (mem_pw.equals(mem_pwcheck) && validate) {
-                        RegisterRequest registerRequest = new RegisterRequest(mem_id, mem_pw, mem_name, mem_phone, mem_emergency, mem_imagedata, responseListener);
+                        RegisterRequest registerRequest = new RegisterRequest(mem_id, mem_pw, mem_name, mem_phone, mem_emergency, responseListener);
+                        //RegisterRequest registerRequest = new RegisterRequest(mem_id, mem_pw, mem_name, mem_phone, mem_emergency, mem_imagedata, responseListener);
                         RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                         queue.add(registerRequest);
                     } else if (!(validate))

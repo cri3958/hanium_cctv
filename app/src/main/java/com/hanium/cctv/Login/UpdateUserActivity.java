@@ -39,7 +39,7 @@ public class UpdateUserActivity extends AppCompatActivity {
         final TextView update_name = (TextView) findViewById(R.id.update_name);
         final TextView update_phone = (TextView) findViewById(R.id.update_phone);
         final TextView update_emergency = (TextView) findViewById(R.id.update_emergency);
-        update_imagedata = (ImageView) findViewById(R.id.update_imagedata);
+        //update_imagedata = (ImageView) findViewById(R.id.update_imagedata);
         Button btn_update = (Button) findViewById(R.id.btn_update);
 
         Intent inIntent = getIntent();
@@ -51,14 +51,14 @@ public class UpdateUserActivity extends AppCompatActivity {
 
         update_id.setEnabled(false);
         update_pw.setEnabled(false);
-        update_imagedata.setOnClickListener(new View.OnClickListener() {
+        /*update_imagedata.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
                 startActivityForResult(intent, GET_GALLERY_IMAGE);
             }
-        });
+        });*/
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,14 +66,13 @@ public class UpdateUserActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "정보를 모두 입력해주세요", Toast.LENGTH_SHORT).show();
                 else {
                     final String mem_id = update_id.getText().toString();
-                    final String mem_pw = update_pw.getText().toString();
                     final String mem_name = update_name.getText().toString();
                     final String mem_phone = update_phone.getText().toString();
                     final String mem_emergency = update_emergency.getText().toString();
-                    d = (BitmapDrawable) ((ImageView) findViewById(R.id.update_imagedata)).getDrawable();
-                    Bitmap b = d.getBitmap();
+                    //d = (BitmapDrawable) ((ImageView) findViewById(R.id.update_imagedata)).getDrawable();
+                    //Bitmap b = d.getBitmap();
                     //b = resize(b);
-                    final String mem_imagedata = getStringFromBitmap(b);
+                    //final String mem_imagedata = getStringFromBitmap(b);
                     //Log.d("mem_imagedata : ", mem_imagedata); 이미지데이터 로그
                     Response.Listener<String> responseListener = new Response.Listener<String>() {
                         @Override
@@ -96,7 +95,8 @@ public class UpdateUserActivity extends AppCompatActivity {
 
                         }
                     };
-                    UpdateUserRequest updateUserRequest = new UpdateUserRequest(mem_id, mem_pw, mem_name, mem_phone, mem_emergency, mem_imagedata, responseListener);
+                    //UpdateUserRequest updateUserRequest = new UpdateUserRequest(mem_id, mem_name, mem_phone, mem_emergency, mem_imagedata, responseListener);
+                    UpdateUserRequest updateUserRequest = new UpdateUserRequest(mem_id, mem_name, mem_phone, mem_emergency, responseListener);
                     RequestQueue queue = Volley.newRequestQueue(UpdateUserActivity.this);
                     queue.add(updateUserRequest);
 

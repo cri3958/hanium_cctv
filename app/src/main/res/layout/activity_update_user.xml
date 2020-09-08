@@ -10,7 +10,7 @@
         android:id="@+id/update_id"
         android:layout_width="200dp"
         android:layout_height="45dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="120dp"
         android:ems="10"
         android:hint="@string/mem_id"
         android:inputType="textPersonName"
@@ -66,16 +66,6 @@
         app:layout_constraintStart_toStartOf="@+id/update_phone"
         app:layout_constraintTop_toBottomOf="@+id/update_phone" />
 
-    <ImageView
-        android:id="@+id/update_imagedata"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center_vertical|center_horizontal"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="@+id/update_emergency"
-        app:layout_constraintStart_toStartOf="@+id/update_emergency"
-        app:layout_constraintTop_toBottomOf="@+id/update_emergency"
-        app:srcCompat="@mipmap/search" />
 
     <Button
         android:id="@+id/btn_update"
@@ -83,8 +73,8 @@
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
         android:text="@string/update"
-        app:layout_constraintEnd_toEndOf="@+id/update_imagedata"
-        app:layout_constraintStart_toStartOf="@+id/update_imagedata"
-        app:layout_constraintTop_toBottomOf="@+id/update_imagedata" />
+        app:layout_constraintEnd_toEndOf="@+id/update_emergency"
+        app:layout_constraintStart_toStartOf="@+id/update_emergency"
+        app:layout_constraintTop_toBottomOf="@+id/update_emergency" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
