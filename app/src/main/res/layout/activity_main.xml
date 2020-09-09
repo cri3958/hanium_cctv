@@ -52,7 +52,7 @@
         android:layout_alignTop="@id/btn_cctv"
         android:layout_marginStart="20dp"
         android:layout_marginTop="25dp"
-        app:srcCompat="@drawable/cctv" />
+        app:srcCompat="@drawable/ic_action_computer" />
 
     <ImageView
         android:layout_width="200dp"
@@ -61,7 +61,7 @@
         android:layout_alignTop="@id/btn_graph"
         android:layout_marginStart="20dp"
         android:layout_marginTop="25dp"
-        app:srcCompat="@drawable/manuscript" />
+        app:srcCompat="@drawable/ic_action_calendar" />
 
     <TextView
         android:layout_width="120dp"

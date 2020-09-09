@@ -5,17 +5,23 @@
     android:layout_height="match_parent"
     tools:context=".cctv.cctv_watch_emergency">
 
-    <TextView
-        android:id="@+id/emergency_text"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:text="1001번 cctv"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+    <LinearLayout
+        android:id="@+id/emergency_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/underbar"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/emergency_text"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="1001번 cctv"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <WebView
         android:id="@+id/emergency_cctv_view"
@@ -24,7 +30,7 @@
         android:layout_marginTop="200dp"
         android:foregroundGravity="center"
         android:layout_above="@id/emergency_btn_emergency"
-        android:layout_below="@+id/emergency_text" />
+        android:layout_below="@+id/emergency_layout" />
 
     <TextView
         android:id="@+id/emergency_btn_emergency"
@@ -34,7 +40,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/edge_circle"
+        android:background="@drawable/edge_circle_red"
         android:gravity="center"
         android:text="@string/emergency"
         android:textColor="@color/red"
