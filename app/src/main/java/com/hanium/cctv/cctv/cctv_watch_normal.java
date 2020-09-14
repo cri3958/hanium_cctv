@@ -23,7 +23,7 @@ import java.util.Date;
 public class cctv_watch_normal extends AppCompatActivity {
     private WebView webView;
     private String url = "http://54.180.149.38/play.html";
-    private String reason = "보호자의 응급신고";
+    private String reason = "보호자의 신고";
 
     @SuppressLint("MissingPermission")
     @Override
@@ -45,7 +45,7 @@ public class cctv_watch_normal extends AppCompatActivity {
         final DbHelper dbHelper = new DbHelper(cctv_watch_normal.this);
         final String[] object_info = dbHelper.getCCTV_info(num);//0=num,1=pw,2=name,3=place,4=special
 
-        text.setText(object_info[0] + "의 cctv");
+        text.setText(object_info[0] + "번 cctv : " + object_info[2]);
         TelephonyManager telManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
 
         btn_emergency.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +61,7 @@ public class cctv_watch_normal extends AppCompatActivity {
                 Intent message = new Intent(Intent.ACTION_SENDTO);
                 String emergencytext = "'" + getString(R.string.app_name) + "' 어플에서 발송되는 응급문자입니다.\n이름 : " + object_info[2] + "\n위치 : " + object_info[3] + "\n특이사항 : " + object_info[4] + "\n신고사유 : " + reason;
                 message.putExtra("sms_body", emergencytext);
-                message.setData(Uri.parse("smsto:" + Uri.encode("1234")));
+                message.setData(Uri.parse("smsto:" + Uri.encode("119")));
                 startActivity(message);
             }
         });

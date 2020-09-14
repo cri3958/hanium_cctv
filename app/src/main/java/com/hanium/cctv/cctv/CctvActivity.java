@@ -142,6 +142,11 @@ public class CctvActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     dialog.show();
+                    text_cctvnum.setEnabled(true);
+                    text_cctvpw.setEnabled(true);
+                    btn_cctvpass.setEnabled(true);
+                    save.setEnabled(false);
+                    save.setTextColor(activity.getResources().getColor(R.color.white));
                 }
             });
 
@@ -187,33 +192,38 @@ public class CctvActivity extends AppCompatActivity {
             btn_cctvpass.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Integer num = Integer.parseInt(text_cctvnum.getText().toString());
-                    Integer pw = Integer.parseInt(text_cctvpw.getText().toString());
-                    String object_num = num.toString();
-                    String object_pw = pw.toString();
-                    Response.Listener<String> responseListener = new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            try {
-                                JSONObject jsonResponse = new JSONObject(response);
-                                boolean success = jsonResponse.getBoolean("success");
-                                if (success) {
-                                    Toast.makeText(activity.getApplicationContext(), "확인되었습니다.", Toast.LENGTH_SHORT).show();
-                                    text_cctvnum.setEnabled(false);
-                                    text_cctvpw.setEnabled(false);
-                                    check = true;
-                                    btn_cctvpass.setText("확인됨");
-                                } else {
-                                    Toast.makeText(activity.getApplicationContext(), "정보가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
+                    if (!(text_cctvnum.getText().toString().isEmpty()) && !(text_cctvpw.getText().toString().isEmpty())) {
+                        String object_num = text_cctvnum.getText().toString();
+                        String object_pw = text_cctvpw.getText().toString();
+                        Response.Listener<String> responseListener = new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+                                    JSONObject jsonResponse = new JSONObject(response);
+                                    boolean success = jsonResponse.getBoolean("success");
+                                    if (success) {
+                                        Toast.makeText(activity.getApplicationContext(), "확인되었습니다.", Toast.LENGTH_SHORT).show();
+                                        btn_cctvpass.setText("확인됨");
+                                        text_cctvnum.setEnabled(false);
+                                        text_cctvpw.setEnabled(false);
+                                        btn_cctvpass.setEnabled(false);
+                                        save.setEnabled(true);
+                                        save.setTextColor(activity.getResources().getColor(R.color.blue));
+                                        check = true;
+                                    } else {
+                                        Toast.makeText(activity.getApplicationContext(), "정보가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
                                 }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
                             }
-                        }
-                    };
-                    CctvcheckRequest cctvcheckRequest = new CctvcheckRequest(object_num, object_pw, responseListener);
-                    RequestQueue queue = Volley.newRequestQueue(activity.getApplicationContext());
-                    queue.add(cctvcheckRequest);
+                        };
+                        CctvcheckRequest cctvcheckRequest = new CctvcheckRequest(object_num, object_pw, responseListener);
+                        RequestQueue queue = Volley.newRequestQueue(activity.getApplicationContext());
+                        queue.add(cctvcheckRequest);
+                    } else {
+                        Toast.makeText(activity.getApplicationContext(), "cctv번호와 비밀번호를 적은 후 눌러주십시오.", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }

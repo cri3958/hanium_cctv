@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".cctv.cctv_watch_normal">
 
     <LinearLayout
@@ -10,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/underbar"
+        android:layout_marginTop="150dp"
         android:orientation="vertical">
 
         <TextView
@@ -28,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foregroundGravity="center"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="70dp"
         android:layout_above="@id/normal_btn_emergency"
         android:layout_below="@+id/normal_layout" />
 
@@ -39,7 +41,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="210dp"
         android:background="@drawable/edge_circle_red"
         android:gravity="center"
         android:text="@string/emergency"

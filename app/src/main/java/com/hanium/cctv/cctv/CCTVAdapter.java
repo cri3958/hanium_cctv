@@ -105,7 +105,7 @@ public class CCTVAdapter extends ArrayAdapter<cctv> {
         return cctvlist.size();
     }
 
-    private class CCTVViewHolder {
+    private static class CCTVViewHolder {
         TextView cctvlist_Num, cctvlist_Name, cctvlist_Place, cctvlist_Special;
         ImageView cctvlist_popup;
     }

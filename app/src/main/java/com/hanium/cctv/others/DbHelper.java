@@ -25,10 +25,10 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String CCTV_SPECIAL = "special";       //cctv의 대상의 특이사항
 
     private static final String RECORD_ID = "id";
-    private static final String RECORD_date = "date";                       //응급상황 날짜
-    private static final String RECORD_object_num = "object_num";           //cctv의 번호
-    private static final String RECORD_mem_name = "mem_name";               //cctv의 대상의 이름
-    private static final String RECORD_reason = "reason";                   //응급상황 발생 이유
+    private static final String RECORD_DATE = "date";                       //응급상황 날짜
+    private static final String RECORD_OBJECT_NUM = "object_num";           //cctv의 번호
+    private static final String RECORD_MEM_NAME = "mem_name";               //cctv의 대상의 이름
+    private static final String RECORD_REASON = "reason";                   //응급상황 발생 이유
 
     public DbHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -45,10 +45,10 @@ public class DbHelper extends SQLiteOpenHelper {
 
         String CREATE_RECORDLIST_TABLE = "CREATE TABLE " + RECORDLIST + "("
                 + RECORD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + RECORD_date + " TEXT,"
-                + RECORD_object_num + " TEXT,"
-                + RECORD_mem_name + " TEXT,"
-                + RECORD_reason + " INTEGER" + ")";
+                + RECORD_DATE + " TEXT,"
+                + RECORD_OBJECT_NUM + " TEXT,"
+                + RECORD_MEM_NAME + " TEXT,"
+                + RECORD_REASON + " INTEGER" + ")";
         db.execSQL(CREATE_CCTVLIST_TABLE);
         db.execSQL(CREATE_RECORDLIST_TABLE);
     }
@@ -100,7 +100,7 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<cctv> cctvlist = new ArrayList<>();
         cctv cctv;
-        Cursor cursor = db.rawQuery("SELECT * FROM " + CCTVLIST + " ORDER BY " + CCTV_ID, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + CCTVLIST + " ORDER BY " + CCTV_NUMBER, null);
         while (cursor.moveToNext()){
             cctv = new cctv();
             cctv.setId(cursor.getInt(cursor.getColumnIndex(CCTV_ID)));
@@ -146,10 +146,10 @@ public class DbHelper extends SQLiteOpenHelper {
     public void insertRECORDLIST(String date, String object_num, String mem_name, String reason) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(RECORD_date, date);
-        contentValues.put(RECORD_object_num, object_num);
-        contentValues.put(RECORD_mem_name, mem_name);
-        contentValues.put(RECORD_reason, reason);
+        contentValues.put(RECORD_DATE, date);
+        contentValues.put(RECORD_OBJECT_NUM, object_num);
+        contentValues.put(RECORD_MEM_NAME, mem_name);
+        contentValues.put(RECORD_REASON, reason);
         db.insert(RECORDLIST, null, contentValues);
         db.close();
     }
@@ -164,10 +164,10 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(RECORD_date, record.getDate());
-        contentValues.put(RECORD_object_num, record.getObject_num());
-        contentValues.put(RECORD_mem_name, record.getMem_name());
-        contentValues.put(RECORD_reason, record.getReason());
+        contentValues.put(RECORD_DATE, record.getDate());
+        contentValues.put(RECORD_OBJECT_NUM, record.getObject_num());
+        contentValues.put(RECORD_MEM_NAME, record.getMem_name());
+        contentValues.put(RECORD_REASON, record.getReason());
 
         db.update(RECORDLIST, contentValues, RECORD_ID + " = " + record.getId(), null);
         db.close();
@@ -177,14 +177,15 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<record> recordlist = new ArrayList<>();
         record record;
-        Cursor cursor = db.rawQuery("SELECT * FROM " + RECORDLIST + " ORDER BY " + RECORD_ID + " DESC", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + RECORDLIST + " ORDER BY " + RECORD_DATE + " DESC", null);
+
         while (cursor.moveToNext()) {
             record = new record();
             record.setId(cursor.getInt(cursor.getColumnIndex(RECORD_ID)));
-            record.setDate(cursor.getString(cursor.getColumnIndex(RECORD_date)));
-            record.setObject_num(cursor.getString(cursor.getColumnIndex(RECORD_object_num)));
-            record.setMem_name(cursor.getString(cursor.getColumnIndex(RECORD_mem_name)));
-            record.setReason(cursor.getString(cursor.getColumnIndex(RECORD_reason)));
+            record.setDate(cursor.getString(cursor.getColumnIndex(RECORD_DATE)));
+            record.setObject_num(cursor.getString(cursor.getColumnIndex(RECORD_OBJECT_NUM)));
+            record.setMem_name(cursor.getString(cursor.getColumnIndex(RECORD_MEM_NAME)));
+            record.setReason(cursor.getString(cursor.getColumnIndex(RECORD_REASON)));
             recordlist.add(record);
         }
         cursor.close();
