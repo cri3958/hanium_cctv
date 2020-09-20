@@ -61,7 +61,8 @@ public class cctv_watch_normal extends AppCompatActivity {
                 Intent message = new Intent(Intent.ACTION_SENDTO);
                 String emergencytext = "'" + getString(R.string.app_name) + "' 어플에서 발송되는 응급문자입니다.\n이름 : " + object_info[2] + "\n위치 : " + object_info[3] + "\n특이사항 : " + object_info[4] + "\n신고사유 : " + reason;
                 message.putExtra("sms_body", emergencytext);
-                message.setData(Uri.parse("smsto:" + Uri.encode("119")));
+                message.setData(Uri.parse("smsto:" + Uri.encode("1234")));
+                //message.setData(Uri.parse("smsto:" + Uri.encode("119")));
                 startActivity(message);
             }
         });

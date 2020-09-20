@@ -28,10 +28,8 @@ public class cctv_watch_emergency extends AppCompatActivity {
         setContentView(R.layout.activity_cctv_watch_emergency);
 
         Intent intent = getIntent();
-        String title = intent.getStringExtra("title");
-        String body = intent.getStringExtra("body");
-
-        final String[] info = body.split("@");                            //0=카메라 번호, 1=알림의 이유(ex]화재, 넘어짐, 구조요청 / 1(화재), 2(넘어짐), 3(구조요청)) 등등..
+        String object_num = intent.getStringExtra("object_num");
+        final String reason = intent.getStringExtra("reason");
 
         TextView textView = (TextView) findViewById(R.id.emergency_text);
         TextView btn_emergency = findViewById(R.id.emergency_btn_emergency);
@@ -43,9 +41,9 @@ public class cctv_watch_emergency extends AppCompatActivity {
         webView.setWebViewClient(new WebViewClientClass());
 
         final DbHelper dbHelper = new DbHelper(this);
-        final String[] object_info = dbHelper.getCCTV_info(info[0]);//0=num,1=pw,2=name,3=place,4=special
+        final String[] object_info = dbHelper.getCCTV_info(object_num);//0=num,1=pw,2=name,3=place,4=special
 
-        textView.setText(info[0] + "번 cctv : " + object_info[2]);
+        textView.setText(object_num + "번 cctv : " + object_info[2]);
 
         btn_emergency.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,12 +53,13 @@ public class cctv_watch_emergency extends AppCompatActivity {
                 SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm");
                 String formatDate = sdfNow.format(date);
 
-                dbHelper.insertRECORDLIST(formatDate, object_info[0], object_info[2], info[1]);
+                dbHelper.insertRECORDLIST(formatDate, object_info[0], object_info[2], reason);
 
                 Intent message = new Intent(Intent.ACTION_SENDTO);
-                String emergencytext = "'" + getString(R.string.app_name) + "' 어플에서 발송되는 응급문자입니다.\n이름 : " + object_info[2] + "\n위치 : " + object_info[3] + "\n특이사항 : " + object_info[4] + "\n신고사유 : " + info[1];
+                String emergencytext = "'" + getString(R.string.app_name) + "' 어플에서 발송되는 응급문자입니다.\n이름 : " + object_info[2] + "\n위치 : " + object_info[3] + "\n특이사항 : " + object_info[4] + "\n신고사유 : " + reason;
                 message.putExtra("sms_body", emergencytext);
-                message.setData(Uri.parse("smsto:" + Uri.encode("119")));
+                message.setData(Uri.parse("smsto:" + Uri.encode("1234")));
+                //message.setData(Uri.parse("smsto:" + Uri.encode("119")));
                 startActivity(message);
             }
         });
