@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">한이음cctv</string>
+    <string name="eng_app_name">HOUSE KEEPER</string>
 
     <string name="autologin">자동로그인</string>
     <string name="login">로그인</string>

@@ -20,6 +20,7 @@ import java.util.Date;
 
 public class cctv_watch_emergency extends AppCompatActivity {
     private WebView webView;
+    //private String url = "http://52.79.107.136";
     private String url = "http://54.180.149.38/play.html";
 
     @Override

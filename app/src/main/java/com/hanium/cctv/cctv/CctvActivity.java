@@ -36,7 +36,6 @@ public class CctvActivity extends AppCompatActivity {
     private ListView listView;
     private CCTVAdapter adapter;
     private DbHelper db;
-    private static boolean check = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,22 +117,25 @@ public class CctvActivity extends AppCompatActivity {
 
     public static class DialogHelper {
         private static boolean check = false;
+        private static EditText text_cctvnum,text_cctvpw,text_name,text_place,text_special;
+        private static TextView save;
+        private static Button btn_cctvpass;
+
         public static void getAddcctvlistDialog(final Activity activity, final View cctvLayout, final CCTVAdapter adapter) {
             final cctv cctv = new cctv();
 
             FloatingActionButton add_cctvlist = activity.findViewById(R.id.fab_add_cctvlist);
 
-            final EditText text_cctvnum = cctvLayout.findViewById(R.id.text_cctvlist_cctvnum);
-            final EditText text_cctvpw = cctvLayout.findViewById(R.id.text_cctvlist_cctvpw);
-            final EditText text_name = cctvLayout.findViewById(R.id.text_cctvlist_name);
-            final EditText text_place = cctvLayout.findViewById(R.id.text_cctvlist_place);
-            final EditText text_special = cctvLayout.findViewById(R.id.text_cctvlist_special);
-            final TextView save = cctvLayout.findViewById(R.id.btn_cctvlist_save);
-            final TextView cancel = cctvLayout.findViewById(R.id.btn_cctvlist_cancel);
-            final Button btn_cctvpass = cctvLayout.findViewById(R.id.btn_cctvpass);
+            text_cctvnum = cctvLayout.findViewById(R.id.text_cctvlist_cctvnum);
+            text_cctvpw = cctvLayout.findViewById(R.id.text_cctvlist_cctvpw);
+            text_name = cctvLayout.findViewById(R.id.text_cctvlist_name);
+            text_place = cctvLayout.findViewById(R.id.text_cctvlist_place);
+            text_special = cctvLayout.findViewById(R.id.text_cctvlist_special);
+            save = cctvLayout.findViewById(R.id.btn_cctvlist_save);
+            TextView cancel = cctvLayout.findViewById(R.id.btn_cctvlist_cancel);
+            btn_cctvpass = cctvLayout.findViewById(R.id.btn_cctvpass);
 
             AlertDialog.Builder dlg = new AlertDialog.Builder(activity);
-            //dlg.setTitle("cctv 추가하기");
             dlg.setView(cctvLayout);
             dlg.setCancelable(false);
             final AlertDialog dialog = dlg.create();

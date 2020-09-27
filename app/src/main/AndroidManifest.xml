@@ -31,13 +31,7 @@
         <activity
             android:name=".others.SplashActivity"
             android:configChanges="screenSize|orientation"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".others.SettingActivity"
             android:configChanges="screenSize|orientation"
@@ -45,7 +39,13 @@
         <activity
             android:name=".Login.LoginActivity"
             android:configChanges="screenSize|orientation"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Login.RegisterActivity"
             android:configChanges="screenSize|orientation"

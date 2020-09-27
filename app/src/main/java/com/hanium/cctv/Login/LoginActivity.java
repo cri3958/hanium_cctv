@@ -9,9 +9,9 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,7 +36,7 @@ import java.io.IOException;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText et_id, et_pass;
-    private Button btn_login, btn_register;
+    private TextView btn_login, btn_register;
     private CheckBox chk_autologin;
     String fileName = "data_autologin.txt";
 
@@ -60,8 +60,8 @@ public class LoginActivity extends AppCompatActivity {
 
         et_id = findViewById(R.id.et_id);
         et_pass = findViewById(R.id.et_pass);
-        btn_login = findViewById(R.id.btn_login);
-        btn_register = findViewById(R.id.btn_register);
+        btn_login = findViewById(R.id.login_btn_login);
+        btn_register = findViewById(R.id.login_btn_register);
         chk_autologin = findViewById(R.id.chk_autologin);
 
         btn_register.setOnClickListener(new View.OnClickListener() {
@@ -140,7 +140,6 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         }
-
     }
     private boolean CheckInternetState(){
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);

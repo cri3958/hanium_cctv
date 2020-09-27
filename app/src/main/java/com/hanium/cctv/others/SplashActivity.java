@@ -22,18 +22,18 @@ public class SplashActivity extends AppCompatActivity {
         Thread myThread1 = new Thread(){
             @Override
             public void run(){
-                    ImageView img = (ImageView)findViewById(R.id.splash_image);
-                    Animation anim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.alpha_anim);
-                    img.startAnimation(anim);
+                ImageView img = (ImageView)findViewById(R.id.splash_image);
+                Animation anim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.alpha_anim);
+                img.startAnimation(anim);
             }
         };
         myThread1.start();
 
-        Thread myThread = new Thread() {
+        Thread myThread2 = new Thread() {
             @Override
             public void run() {
                 try {
-                    sleep(5000);
+                    sleep(1500);
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
                     finish();
@@ -42,7 +42,7 @@ public class SplashActivity extends AppCompatActivity {
                 }
             }
         };
-        myThread.start();
+        myThread2.start();
     }
 
     @Override

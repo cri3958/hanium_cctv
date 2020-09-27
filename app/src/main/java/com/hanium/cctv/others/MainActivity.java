@@ -20,8 +20,6 @@ import com.hanium.cctv.cctv.CctvActivity;
 import com.hanium.cctv.record.RecordActivity;
 
 public class MainActivity extends AppCompatActivity {
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(),token,Toast.LENGTH_SHORT).show();
             }
         });
-
 
         TextView mem_name = (TextView) findViewById(R.id.mem_name);
         final Intent inIntent = getIntent();
@@ -73,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) { //화면회전 방지
