@@ -71,7 +71,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 dialog.show();
                                 et_id.setEnabled(false);
                                 validate=true;
-                                validateButton.setText("확인");
+                                validateButton.setText("확인됨");
+                                validateButton.setTextColor(getResources().getColor(R.color.white));
                             }
                             else{
                                 AlertDialog.Builder builder=new AlertDialog.Builder( RegisterActivity.this );

@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:ems="10"
+                android:ems="9"
                 android:hint="@string/mem_id"
                 android:inputType="textPersonName" />
 
@@ -74,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:ems="10"
+                android:ems="9"
                 android:hint="@string/mem_pw"
                 android:inputType="textPersonName" />
         </LinearLayout>
@@ -105,7 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:ems="10"
+                android:ems="9"
                 android:hint="@string/mem_pwcheck"
                 android:inputType="textPersonName" />
         </LinearLayout>
@@ -136,7 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:ems="10"
+                android:ems="9"
                 android:hint="@string/mem_name"
                 android:inputType="textPersonName" />
         </LinearLayout>
@@ -167,9 +167,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:ems="10"
+                android:ems="9"
                 android:hint="@string/mem_phone"
-                android:inputType="textPersonName"  />
+                android:inputType="number"  />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/register_emergency_layout"
@@ -198,9 +198,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:ems="10"
+                android:ems="9"
                 android:hint="@string/mem_emergency"
-                android:inputType="textPersonName" />
+                android:inputType="number" />
 
         </LinearLayout>
         <TextView
@@ -213,7 +213,7 @@
             android:textSize="24dp"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:ems="10"
+            android:ems="9"
             android:layout_marginTop="20dp"
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
@@ -228,7 +228,7 @@
             android:background="@drawable/circle_background_register_btn_validate"
             android:text="@string/mem_idcheck"
             android:textColor="@color/black"
-
+            android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@id/register_id_layout"
             app:layout_constraintTop_toTopOf="@id/register_id_layout"
             app:layout_constraintBottom_toBottomOf="@id/register_id_layout"/>

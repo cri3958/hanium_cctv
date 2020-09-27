@@ -61,7 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:ems="10"
+                    android:ems="9"
                     android:hint="@string/mem_id"
                     android:inputType="textPersonName" />
         </LinearLayout>
@@ -90,7 +90,7 @@
                 android:id="@+id/et_pass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:ems="9"
                 android:hint="@string/mem_pw"
                 android:inputType="textPassword" />
         </LinearLayout>
