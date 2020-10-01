@@ -43,6 +43,9 @@ public class CctvActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cctv);
 
         initAll();
+        FloatingActionButton add_cctvlist1 = findViewById(R.id.fab_add_cctvlist);
+        listView.bringToFront();
+        add_cctvlist1.bringToFront();
     }
 
     private void initAll() {
@@ -150,16 +153,17 @@ public class CctvActivity extends AppCompatActivity {
             cancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    text_cctvnum.setText("");
-                    text_cctvpw.setText("");
-                    text_name.setText("");
-                    text_place.setText("");
-                    text_special.setText("");
+                    text_cctvnum.getText().clear();
+                    text_cctvpw.getText().clear();
+                    text_name.getText().clear();
+                    text_place.getText().clear();
+                    text_special.getText().clear();
                     btn_cctvpass.setText("확인하기");
                     text_cctvnum.setEnabled(true);
                     text_cctvpw.setEnabled(true);
                     btn_cctvpass.setEnabled(true);
                     check = false;
+                    text_cctvnum.requestFocus();
                     dialog.dismiss();
                 }
             });
@@ -191,6 +195,10 @@ public class CctvActivity extends AppCompatActivity {
                         text_name.getText().clear();
                         text_place.getText().clear();
                         text_special.getText().clear();
+                        text_cctvnum.setEnabled(true);
+                        text_cctvpw.setEnabled(true);
+                        btn_cctvpass.setEnabled(true);
+                        check = false;
                         text_cctvnum.requestFocus();
                         dialog.dismiss();
                     }

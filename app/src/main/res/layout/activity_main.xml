@@ -14,14 +14,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
 
-    <!--<ImageView
-        android:id="@+id/main_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-
-        app:srcCompat="@drawable/pic_02"
-        android:alpha="0.8"/>-->
     <ImageView
         android:id="@+id/btn_setting"
         android:layout_width="50dp"
