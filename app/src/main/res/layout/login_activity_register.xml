@@ -76,7 +76,7 @@
                 android:layout_gravity="center_vertical"
                 android:ems="9"
                 android:hint="@string/mem_pw"
-                android:inputType="textPersonName" />
+                android:inputType="textPassword" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/register_passck_layout"
@@ -107,7 +107,7 @@
                 android:layout_gravity="center_vertical"
                 android:ems="9"
                 android:hint="@string/mem_pwcheck"
-                android:inputType="textPersonName" />
+                android:inputType="textPassword" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/register_name_layout"

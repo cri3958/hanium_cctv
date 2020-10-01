@@ -1,9 +1,12 @@
 package com.hanium.cctv.Login;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,7 +27,7 @@ import org.json.JSONObject;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText et_id, et_pass, et_name, et_passck, et_phone, et_emergency;
-    private TextView btn_register,validateButton;
+    private TextView btn_register,btn_validate;
     private AlertDialog dialog;
     private boolean validate = false;
 
@@ -39,10 +42,12 @@ public class RegisterActivity extends AppCompatActivity {
         et_passck = findViewById(R.id.et_passck);
         et_phone = findViewById(R.id.et_phone);
         et_emergency = findViewById(R.id.et_emergency);
-        validateButton = findViewById(R.id.register_btn_validate);
+        btn_validate = findViewById(R.id.register_btn_validate);
         btn_register=findViewById(R.id.register_btn_register);
 
-        validateButton.setOnClickListener(new View.OnClickListener() {
+        setUIratio();
+
+        btn_validate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {  //아이디 중복여부체크
                 String mem_id = et_id.getText().toString();
@@ -71,8 +76,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 dialog.show();
                                 et_id.setEnabled(false);
                                 validate=true;
-                                validateButton.setText("확인됨");
-                                validateButton.setTextColor(getResources().getColor(R.color.white));
+                                btn_validate.setText("확인됨");
+                                btn_validate.setTextColor(getResources().getColor(R.color.white));
                             }
                             else{
                                 AlertDialog.Builder builder=new AlertDialog.Builder( RegisterActivity.this );
@@ -146,5 +151,21 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+    }
+    public Point getScreenSize(Activity activity) {
+        Display display = activity.getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+
+        return  size;
+    }
+    public void setUIratio(){
+        Point ScreenSize = getScreenSize(this);
+        float density  = getResources().getDisplayMetrics().density;
+
+        int standardSize_X = (int) (ScreenSize.x / density);
+
+        btn_register.setTextSize((float)standardSize_X/19);
+        btn_validate.setTextSize((float)standardSize_X/28);
     }
 }

@@ -1,7 +1,10 @@
 package com.hanium.cctv.Login;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +33,8 @@ public class UpdateUserActivity extends AppCompatActivity {
         update_phone = (TextView) findViewById(R.id.update_phone);
         update_emergency = (TextView) findViewById(R.id.update_emergency);
         btn_update = (TextView) findViewById(R.id.update_btn_update);
+
+        setUIratio();
 
         Intent inIntent = getIntent();
         String mem_id = inIntent.getStringExtra("mem_id");
@@ -80,5 +85,21 @@ public class UpdateUserActivity extends AppCompatActivity {
                 }
             }
         });
+
+    }
+    public Point getScreenSize(Activity activity) {
+        Display display = activity.getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+
+        return  size;
+    }
+    public void setUIratio(){
+        Point ScreenSize = getScreenSize(this);
+        float density  = getResources().getDisplayMetrics().density;
+
+        int standardSize_X = (int) (ScreenSize.x / density);
+
+        btn_update.setTextSize((float)standardSize_X/19);
     }
 }

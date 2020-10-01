@@ -1,16 +1,21 @@
 package com.hanium.cctv.Login;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Point;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,8 +41,9 @@ import java.io.IOException;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText et_id, et_pass;
-    private TextView btn_login, btn_register;
+    private TextView btn_login, btn_register,eng_name;
     private CheckBox chk_autologin;
+    private ImageView login_image;
     String fileName = "data_autologin.txt";
 
 
@@ -63,6 +69,8 @@ public class LoginActivity extends AppCompatActivity {
         btn_login = findViewById(R.id.login_btn_login);
         btn_register = findViewById(R.id.login_btn_register);
         chk_autologin = findViewById(R.id.chk_autologin);
+
+        setUIratio();
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,5 +184,30 @@ public class LoginActivity extends AppCompatActivity {
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
     }
+    public Point getScreenSize(Activity activity) {
+        Display display = activity.getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
 
+        return  size;
+    }
+    public void setUIratio(){
+        Point ScreenSize = getScreenSize(this);
+        float density  = getResources().getDisplayMetrics().density;
+
+        int standardSize_X = (int) (ScreenSize.x / density);
+        int standardSize_Y = (int) (ScreenSize.y / density);
+        Log.d("StandardSize",standardSize_X+" // "+standardSize_Y);
+
+        login_image = (ImageView) findViewById(R.id.login_imageView);
+        eng_name = (TextView)findViewById(R.id.login_eng_app_name);
+
+        ViewGroup.LayoutParams params = login_image.getLayoutParams();
+        params.width = standardSize_X;
+        params.height = standardSize_Y/7*4;
+        login_image.setLayoutParams(params);
+        eng_name.setTextSize((float)standardSize_X/13);
+        btn_login.setTextSize((float)standardSize_X/19);
+        btn_register.setTextSize((float)standardSize_X/19);
+    }
 }

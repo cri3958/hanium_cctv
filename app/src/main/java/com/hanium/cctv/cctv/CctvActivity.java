@@ -222,7 +222,6 @@ public class CctvActivity extends AppCompatActivity {
                                         text_cctvnum.setEnabled(false);
                                         text_cctvpw.setEnabled(false);
                                         btn_cctvpass.setEnabled(false);
-                                        save.setEnabled(true);
                                         check = true;
                                     } else {
                                         Toast.makeText(activity.getApplicationContext(), "정보가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();

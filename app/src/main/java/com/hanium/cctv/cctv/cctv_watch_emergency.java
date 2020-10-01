@@ -1,8 +1,11 @@
 package com.hanium.cctv.cctv;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -22,6 +25,7 @@ public class cctv_watch_emergency extends AppCompatActivity {
     private WebView webView;
     //private String url = "http://52.79.107.136";
     private String url = "http://54.180.149.38/play.html";
+    private TextView textView,btn_emergency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +36,12 @@ public class cctv_watch_emergency extends AppCompatActivity {
         String object_num = intent.getStringExtra("object_num");
         final String reason = intent.getStringExtra("reason");
 
-        TextView textView = (TextView) findViewById(R.id.emergency_text);
-        TextView btn_emergency = findViewById(R.id.emergency_btn_emergency);
-
+        textView = (TextView) findViewById(R.id.emergency_text);
+        btn_emergency = findViewById(R.id.emergency_btn_emergency);
         webView = (WebView) findViewById(R.id.emergency_cctv_view);
+
+        setUIratio();
+
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(url);
         webView.setWebChromeClient(new WebChromeClient());
@@ -81,5 +87,21 @@ public class cctv_watch_emergency extends AppCompatActivity {
             view.loadUrl(url);
             return true;
         }
+    }
+    public Point getScreenSize(Activity activity) {
+        Display display = activity.getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+
+        return  size;
+    }
+    public void setUIratio(){
+        Point ScreenSize = getScreenSize(this);
+        float density  = getResources().getDisplayMetrics().density;
+
+        int standardSize_X = (int) (ScreenSize.x / density);
+
+        textView.setTextSize((float)standardSize_X/20);
+        btn_emergency.setTextSize((float)standardSize_X/20);
     }
 }

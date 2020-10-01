@@ -1,10 +1,14 @@
 package com.hanium.cctv.others;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -23,10 +27,17 @@ import org.json.JSONObject;
 
 public class SettingActivity extends AppCompatActivity {
     LinearLayout Setting_1,Setting_2,Setting_3;
+    TextView text_1,text_2,text_3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+
+        text_1 = (TextView)findViewById(R.id.setting_text_1);
+        text_2 = (TextView)findViewById(R.id.setting_text_2);
+        text_3 = (TextView)findViewById(R.id.setting_text_3);
+
+        setUIratio();
 
         Intent inIntent = getIntent();
         final String mem_id = inIntent.getStringExtra("mem_id");
@@ -94,5 +105,22 @@ public class SettingActivity extends AppCompatActivity {
         Intent intent = new Intent(SettingActivity.this, LoginActivity.class);
         startActivity(intent);
         System.exit(0);
+    }
+    public Point getScreenSize(Activity activity) {
+        Display display = activity.getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+
+        return  size;
+    }
+    public void setUIratio(){
+        Point ScreenSize = getScreenSize(this);
+        float density  = getResources().getDisplayMetrics().density;
+
+        int standardSize_X = (int) (ScreenSize.x / density);
+
+        text_1.setTextSize((float)standardSize_X/18);
+        text_2.setTextSize((float)standardSize_X/18);
+        text_3.setTextSize((float)standardSize_X/18);
     }
 }
