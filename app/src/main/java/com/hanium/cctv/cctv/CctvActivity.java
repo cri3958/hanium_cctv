@@ -144,17 +144,22 @@ public class CctvActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     dialog.show();
-                    text_cctvnum.setEnabled(true);
-                    text_cctvpw.setEnabled(true);
-                    btn_cctvpass.setEnabled(true);
-                    save.setEnabled(false);
-                    save.setTextColor(activity.getResources().getColor(R.color.white));
                 }
             });
 
             cancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    text_cctvnum.setText("");
+                    text_cctvpw.setText("");
+                    text_name.setText("");
+                    text_place.setText("");
+                    text_special.setText("");
+                    btn_cctvpass.setText("확인하기");
+                    text_cctvnum.setEnabled(true);
+                    text_cctvpw.setEnabled(true);
+                    btn_cctvpass.setEnabled(true);
+                    check = false;
                     dialog.dismiss();
                 }
             });
@@ -210,7 +215,6 @@ public class CctvActivity extends AppCompatActivity {
                                         text_cctvpw.setEnabled(false);
                                         btn_cctvpass.setEnabled(false);
                                         save.setEnabled(true);
-                                        save.setTextColor(activity.getResources().getColor(R.color.blue));
                                         check = true;
                                     } else {
                                         Toast.makeText(activity.getApplicationContext(), "정보가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();

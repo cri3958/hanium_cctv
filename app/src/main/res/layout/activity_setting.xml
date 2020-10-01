@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,59 +8,95 @@
     tools:context=".others.SettingActivity">
 
 
-    <TableRow
-        android:id="@+id/Setting_1"
+    <LinearLayout
+        android:id="@+id/setting_1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/edge">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/edge"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <TextView
-
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="10sp"
+            android:layout_weight="5"
             android:gravity="center_vertical"
             android:text="@string/Setting_1"
+            android:ems="7"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="25sp"
             android:textStyle="bold" />
-    </TableRow>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:src="@drawable/ic_exit" />
+    </LinearLayout>
 
-    <TableRow
-        android:id="@+id/Setting_2"
+    <LinearLayout
+        android:id="@+id/setting_2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/edge">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/setting_1"
+        android:background="@drawable/edge"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <TextView
-
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="10sp"
+            android:layout_weight="5"
             android:gravity="center_vertical"
             android:text="@string/Setting_2"
+            android:ems="7"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="25sp"
             android:textStyle="bold" />
-    </TableRow>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:src="@drawable/ic_edit" />
+    </LinearLayout>
 
-    <TableRow
-        android:id="@+id/Setting_3"
+    <LinearLayout
+        android:id="@+id/setting_3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/edge">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/setting_2"
+        android:background="@drawable/edge"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <TextView
-
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="10sp"
+            android:layout_weight="5"
             android:gravity="center_vertical"
             android:text="@string/Setting_3"
+            android:ems="7"
             android:textColor="@color/red"
-            android:textSize="20sp"
+            android:textSize="25sp"
             android:textStyle="bold" />
-    </TableRow>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:src="@drawable/ic_delete" />
+    </LinearLayout>
 
 
-</TableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,6 @@ package com.hanium.cctv.Login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class UpdateUserActivity extends AppCompatActivity {
-    TextView update_id,update_pw,update_name,update_phone,update_emergency;
+    TextView update_id,update_pw,update_name,update_phone,update_emergency, btn_update;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,7 @@ public class UpdateUserActivity extends AppCompatActivity {
         update_name = (TextView) findViewById(R.id.update_name);
         update_phone = (TextView) findViewById(R.id.update_phone);
         update_emergency = (TextView) findViewById(R.id.update_emergency);
-        Button btn_update = (Button) findViewById(R.id.btn_update);
+        btn_update = (TextView) findViewById(R.id.update_btn_update);
 
         Intent inIntent = getIntent();
         String mem_id = inIntent.getStringExtra("mem_id");

@@ -6,75 +6,191 @@
     android:layout_height="match_parent"
     tools:context=".Login.UpdateUserActivity">
 
-    <EditText
-        android:id="@+id/update_id"
-        android:layout_width="200dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="120dp"
-        android:ems="10"
-        android:hint="@string/mem_id"
-        android:inputType="textPersonName"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/register_constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <EditText
-        android:id="@+id/update_pass"
-        android:layout_width="200dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="@string/mem_pw"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/update_id"
-        app:layout_constraintStart_toStartOf="@+id/update_id"
-        app:layout_constraintTop_toBottomOf="@+id/update_id" />
+        <LinearLayout
+            android:id="@+id/update_id_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/update_name"
-        android:layout_width="200dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="@string/mem_name"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/update_pass"
-        app:layout_constraintStart_toStartOf="@+id/update_pass"
-        app:layout_constraintTop_toBottomOf="@+id/update_pass" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_login" />
 
-    <EditText
-        android:id="@+id/update_phone"
-        android:layout_width="200dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="@string/mem_phone"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="@+id/update_name"
-        app:layout_constraintStart_toStartOf="@+id/update_name"
-        app:layout_constraintTop_toBottomOf="@+id/update_name" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="　" />
 
-    <EditText
-        android:id="@+id/update_emergency"
-        android:layout_width="200dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="@string/mem_emergency"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="@+id/update_phone"
-        app:layout_constraintStart_toStartOf="@+id/update_phone"
-        app:layout_constraintTop_toBottomOf="@+id/update_phone" />
+            <EditText
+                android:id="@+id/update_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:ems="9"
+                android:hint="@string/mem_id"
+                android:inputType="textPersonName" />
 
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/update_pw_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/update_id_layout" >
 
-    <Button
-        android:id="@+id/btn_update"
-        android:layout_width="200dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/update"
-        app:layout_constraintEnd_toEndOf="@+id/update_emergency"
-        app:layout_constraintStart_toStartOf="@+id/update_emergency"
-        app:layout_constraintTop_toBottomOf="@+id/update_emergency" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_password" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="　" />
+
+            <EditText
+                android:id="@+id/update_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:ems="9"
+                android:hint="@string/mem_pw"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/update_name_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/update_pw_layout" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_login" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="　" />
+
+            <EditText
+                android:id="@+id/update_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:ems="9"
+                android:hint="@string/mem_name"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/update_phone_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/update_name_layout" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_phone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="　" />
+
+            <EditText
+                android:id="@+id/update_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:ems="9"
+                android:hint="@string/mem_phone"
+                android:inputType="number"  />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/update_emergency_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/update_phone_layout" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_phone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="　" />
+
+            <EditText
+                android:id="@+id/update_emergency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:ems="9"
+                android:hint="@string/mem_emergency"
+                android:inputType="number" />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/update_btn_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circle_background_login_btn_register"
+            android:gravity="center"
+            android:text="@string/update"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:ems="9"
+            android:layout_marginTop="20dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/update_emergency_layout"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

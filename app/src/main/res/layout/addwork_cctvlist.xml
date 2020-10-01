@@ -138,8 +138,7 @@
             android:background="@drawable/edge"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:enabled="false"
-            android:textColor="@color/white" />
+            android:textColor="@color/blue" />
         <TextView
             android:id="@+id/btn_cctvlist_cancel"
             android:layout_width="wrap_content"

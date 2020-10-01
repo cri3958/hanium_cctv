@@ -28,6 +28,7 @@ public class RecordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record);
         initAll();
+        listView.bringToFront();
     }
 
     private void initAll() {

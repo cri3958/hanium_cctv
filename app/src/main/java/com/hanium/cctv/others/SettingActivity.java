@@ -4,7 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TableRow;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -22,7 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SettingActivity extends AppCompatActivity {
-
+    LinearLayout Setting_1,Setting_2,Setting_3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,16 +31,16 @@ public class SettingActivity extends AppCompatActivity {
         Intent inIntent = getIntent();
         final String mem_id = inIntent.getStringExtra("mem_id");
         final String mem_pw = inIntent.getStringExtra("mem_pw");
-        TableRow setting1 = (TableRow) findViewById(R.id.Setting_1);
-        setting1.setOnClickListener(new View.OnClickListener() {
+        Setting_1 = (LinearLayout) findViewById(R.id.setting_1);
+        Setting_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 restartapp();
             }
         });
 
-        TableRow setting2 = (TableRow) findViewById(R.id.Setting_2);
-        setting2.setOnClickListener(new View.OnClickListener() {
+        Setting_2 = (LinearLayout) findViewById(R.id.setting_2);
+        Setting_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SettingActivity.this, UpdateUserActivity.class);
@@ -50,8 +50,8 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
 
-        TableRow setting3 = (TableRow) findViewById(R.id.Setting_3);
-        setting3.setOnClickListener(new View.OnClickListener() {
+        Setting_3 = (LinearLayout) findViewById(R.id.setting_3);
+        Setting_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder dlg = new AlertDialog.Builder(SettingActivity.this);

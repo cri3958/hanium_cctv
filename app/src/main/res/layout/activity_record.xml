@@ -14,6 +14,11 @@
             android:id="@+id/listview_recordlist"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="@null"/>
+            android:divider="@null" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_action_calendar"
+            android:alpha="0.7"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>
