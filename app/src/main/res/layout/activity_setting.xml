@@ -7,7 +7,11 @@
     android:orientation="vertical"
     tools:context=".others.SettingActivity">
 
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/gear"
+        android:alpha="0.3"/>
     <LinearLayout
         android:id="@+id/setting_1"
         android:layout_width="match_parent"

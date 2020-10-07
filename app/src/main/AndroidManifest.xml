@@ -29,10 +29,6 @@
             android:configChanges="screenSize|orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".others.SplashActivity"
-            android:configChanges="screenSize|orientation"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name=".others.SettingActivity"
             android:configChanges="screenSize|orientation"
             android:screenOrientation="portrait" />

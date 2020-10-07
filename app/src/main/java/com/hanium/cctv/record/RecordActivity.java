@@ -10,7 +10,10 @@ import android.view.MenuItem;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.hanium.cctv.R;
 import com.hanium.cctv.others.DbHelper;
@@ -22,13 +25,21 @@ public class RecordActivity extends AppCompatActivity {
     private ListView listView;
     private RECORDAdapter adapter;
     private DbHelper db;
-
+    private ActionBar record_actionbar;
+    String actionbar_title = "응급신고 동작 이력";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record);
         initAll();
-        listView.bringToFront();
+
+        Toolbar record_toolbar = (Toolbar) findViewById(R.id.record_toolbar);
+        setSupportActionBar(record_toolbar);
+        record_actionbar = getSupportActionBar();
+        record_actionbar.setDisplayShowCustomEnabled(true);
+        record_actionbar.setDisplayShowTitleEnabled(true);
+        record_actionbar.setTitle(actionbar_title);
+        record_actionbar.setDisplayHomeAsUpEnabled(true);
     }
 
     private void initAll() {
@@ -57,6 +68,7 @@ public class RecordActivity extends AppCompatActivity {
             public boolean onCreateActionMode(ActionMode mode, Menu menu) {
                 MenuInflater menuInflater = mode.getMenuInflater();
                 menuInflater.inflate(R.menu.toolbar_action_mode, menu);
+                record_actionbar.hide();
                 return true;
             }
 
@@ -91,7 +103,24 @@ public class RecordActivity extends AppCompatActivity {
 
             @Override
             public void onDestroyActionMode(ActionMode mode) {
+                record_actionbar.show();
             }
         });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.blank_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

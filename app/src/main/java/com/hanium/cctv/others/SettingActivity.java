@@ -122,5 +122,7 @@ public class SettingActivity extends AppCompatActivity {
         text_1.setTextSize((float)standardSize_X/18);
         text_2.setTextSize((float)standardSize_X/18);
         text_3.setTextSize((float)standardSize_X/18);
+
+
     }
 }

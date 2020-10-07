@@ -16,8 +16,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -36,16 +39,21 @@ public class CctvActivity extends AppCompatActivity {
     private ListView listView;
     private CCTVAdapter adapter;
     private DbHelper db;
-
+    private ActionBar cctv_actionbar;
+    String actionbar_title = "등록된 CCTV 목록";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cctv);
-
         initAll();
-        FloatingActionButton add_cctvlist1 = findViewById(R.id.fab_add_cctvlist);
-        listView.bringToFront();
-        add_cctvlist1.bringToFront();
+
+        Toolbar cctv_toolbar = findViewById(R.id.cctv_toolbar);
+        setSupportActionBar(cctv_toolbar);
+        cctv_actionbar = getSupportActionBar();
+        cctv_actionbar.setDisplayShowCustomEnabled(true);
+        cctv_actionbar.setDisplayShowTitleEnabled(true);
+        cctv_actionbar.setTitle(actionbar_title);
+        cctv_actionbar.setDisplayHomeAsUpEnabled(true);
     }
 
     private void initAll() {
@@ -70,11 +78,11 @@ public class CctvActivity extends AppCompatActivity {
                 mode.setTitle(checkedCount + "개 선택됨");
                 if (checkedCount == 0) mode.finish();
             }
-
             @Override
             public boolean onCreateActionMode(ActionMode mode, Menu menu) {
                 MenuInflater menuInflater = mode.getMenuInflater();
                 menuInflater.inflate(R.menu.toolbar_action_mode, menu);
+                cctv_actionbar.hide();
                 return true;
             }
 
@@ -109,6 +117,7 @@ public class CctvActivity extends AppCompatActivity {
 
             @Override
             public void onDestroyActionMode(ActionMode mode) {
+                cctv_actionbar.show();
             }
         });
     }
@@ -121,7 +130,6 @@ public class CctvActivity extends AppCompatActivity {
     public static class DialogHelper {
         private static boolean check = false;
         private static EditText text_cctvnum,text_cctvpw,text_name,text_place,text_special;
-        private static TextView save;
         private static Button btn_cctvpass;
 
         public static void getAddcctvlistDialog(final Activity activity, final View cctvLayout, final CCTVAdapter adapter) {
@@ -134,7 +142,7 @@ public class CctvActivity extends AppCompatActivity {
             text_name = cctvLayout.findViewById(R.id.text_cctvlist_name);
             text_place = cctvLayout.findViewById(R.id.text_cctvlist_place);
             text_special = cctvLayout.findViewById(R.id.text_cctvlist_special);
-            save = cctvLayout.findViewById(R.id.btn_cctvlist_save);
+            TextView save = cctvLayout.findViewById(R.id.btn_cctvlist_save);
             TextView cancel = cctvLayout.findViewById(R.id.btn_cctvlist_cancel);
             btn_cctvpass = cctvLayout.findViewById(R.id.btn_cctvpass);
 
@@ -240,5 +248,21 @@ public class CctvActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.blank_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
