@@ -40,7 +40,7 @@ public class CctvActivity extends AppCompatActivity {
     private CCTVAdapter adapter;
     private DbHelper db;
     private ActionBar cctv_actionbar;
-    String actionbar_title = "등록된 CCTV 목록";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +52,7 @@ public class CctvActivity extends AppCompatActivity {
         cctv_actionbar = getSupportActionBar();
         cctv_actionbar.setDisplayShowCustomEnabled(true);
         cctv_actionbar.setDisplayShowTitleEnabled(true);
-        cctv_actionbar.setTitle(actionbar_title);
+        cctv_actionbar.setTitle(R.string.cctv_actionbar);
         cctv_actionbar.setDisplayHomeAsUpEnabled(true);
     }
 

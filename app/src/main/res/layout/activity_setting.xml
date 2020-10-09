@@ -7,18 +7,22 @@
     android:orientation="vertical"
     tools:context=".others.SettingActivity">
 
-    <ImageView
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/setting_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/gear"
-        android:alpha="0.3"/>
+        android:layout_height="wrap_content"
+        android:background="@drawable/underbar"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/setting_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setting_toolbar"
         android:background="@drawable/edge"
         android:paddingTop="10dp"
         android:paddingBottom="10dp">

@@ -6,13 +6,19 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -28,6 +34,7 @@ import org.json.JSONObject;
 public class SettingActivity extends AppCompatActivity {
     LinearLayout Setting_1,Setting_2,Setting_3;
     TextView text_1,text_2,text_3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +45,14 @@ public class SettingActivity extends AppCompatActivity {
         text_3 = (TextView)findViewById(R.id.setting_text_3);
 
         setUIratio();
+
+        Toolbar setting_toolbar = findViewById(R.id.setting_toolbar);
+        setSupportActionBar(setting_toolbar);
+        ActionBar setting_actionbar = getSupportActionBar();
+        setting_actionbar.setDisplayShowCustomEnabled(true);
+        setting_actionbar.setDisplayShowTitleEnabled(true);
+        setting_actionbar.setTitle(R.string.setting_actionbar);
+        setting_actionbar.setDisplayHomeAsUpEnabled(true);
 
         Intent inIntent = getIntent();
         final String mem_id = inIntent.getStringExtra("mem_id");
@@ -124,5 +139,22 @@ public class SettingActivity extends AppCompatActivity {
         text_3.setTextSize((float)standardSize_X/18);
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.blank_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

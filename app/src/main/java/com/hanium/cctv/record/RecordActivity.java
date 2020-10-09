@@ -26,7 +26,7 @@ public class RecordActivity extends AppCompatActivity {
     private RECORDAdapter adapter;
     private DbHelper db;
     private ActionBar record_actionbar;
-    String actionbar_title = "응급신고 동작 이력";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +38,7 @@ public class RecordActivity extends AppCompatActivity {
         record_actionbar = getSupportActionBar();
         record_actionbar.setDisplayShowCustomEnabled(true);
         record_actionbar.setDisplayShowTitleEnabled(true);
-        record_actionbar.setTitle(actionbar_title);
+        record_actionbar.setTitle(R.string.record_actionbar);
         record_actionbar.setDisplayHomeAsUpEnabled(true);
     }
 
