@@ -44,7 +44,7 @@ public class RecordActivity extends AppCompatActivity {
 
     private void initAll() {
         setupAdapter();
-        setupListViewMultiSelect();
+        //setupListViewMultiSelect(); >>기존 액션바와 새로 생성되는 툴바가 theme가 다름
     }
 
     private void setupAdapter() {

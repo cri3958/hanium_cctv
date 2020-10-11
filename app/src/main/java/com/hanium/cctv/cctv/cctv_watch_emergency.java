@@ -13,7 +13,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.hanium.cctv.R;
 import com.hanium.cctv.others.DbHelper;
@@ -25,7 +27,7 @@ public class cctv_watch_emergency extends AppCompatActivity {
     private WebView webView;
     private String url = "http://52.79.107.136/play.html";
     //private String url = "http://54.180.149.38/play.html";
-    private TextView textView,btn_emergency;
+    private TextView btn_emergency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,6 @@ public class cctv_watch_emergency extends AppCompatActivity {
         String object_num = intent.getStringExtra("object_num");
         final String reason = intent.getStringExtra("reason");
 
-        textView = (TextView) findViewById(R.id.emergency_text);
         btn_emergency = findViewById(R.id.emergency_btn_emergency);
         webView = (WebView) findViewById(R.id.emergency_cctv_view);
 
@@ -50,7 +51,13 @@ public class cctv_watch_emergency extends AppCompatActivity {
         final DbHelper dbHelper = new DbHelper(this);
         final String[] object_info = dbHelper.getCCTV_info(object_num);//0=num,1=pw,2=name,3=place,4=special
 
-        textView.setText(object_num + "번 cctv : " + object_info[2]);
+        Toolbar cctv_emergency_toolbar = findViewById(R.id.cctv_emergency_toolbar);
+        setSupportActionBar(cctv_emergency_toolbar);
+        ActionBar cctv_emergency_actionbar = getSupportActionBar();
+        cctv_emergency_actionbar.setDisplayShowCustomEnabled(true);
+        cctv_emergency_actionbar.setDisplayShowTitleEnabled(true);
+        cctv_emergency_actionbar.setTitle(object_num + "번 cctv : " + object_info[2]);
+        cctv_emergency_actionbar.setDisplayHomeAsUpEnabled(true);
 
         btn_emergency.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +108,6 @@ public class cctv_watch_emergency extends AppCompatActivity {
 
         int standardSize_X = (int) (ScreenSize.x / density);
 
-        textView.setTextSize((float)standardSize_X/20);
         btn_emergency.setTextSize((float)standardSize_X/20);
     }
 }

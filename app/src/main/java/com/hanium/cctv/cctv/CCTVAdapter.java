@@ -70,6 +70,19 @@ public class CCTVAdapter extends ArrayAdapter<cctv> {
                 final PopupMenu popup = new PopupMenu(mActivity, holder.cctvlist_popup);
                 final DbHelper db = new DbHelper(mActivity);
                 popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
+
+                /*int positionOfMenuItem = 0;
+                MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
+                SpannableString s = new SpannableString("CCTV 확인하기");
+                s.setSpan(new ForegroundColorSpan(Color.parseColor("#D9D9D9")), 0, s.length(), 0);
+                item.setTitle(s);
+
+                positionOfMenuItem = 1;
+                item = popup.getMenu().getItem(positionOfMenuItem);
+                s = new SpannableString("CCTV 등록취소");
+                s.setSpan(new ForegroundColorSpan(Color.parseColor("#D9D9D9")), 0, s.length(), 0);
+                item.
+                item.setTitle(s);*/
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {

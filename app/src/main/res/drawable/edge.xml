@@ -1,6 +1,3 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ffffff" />
-    <stroke
-        android:width="1sp"
-        android:color="#AA979595" />
+    <solid android:color="@color/textview" />
 </shape>

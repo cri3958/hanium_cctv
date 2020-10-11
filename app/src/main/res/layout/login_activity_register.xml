@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login.RegisterActivity">
+    tools:context=".Login.RegisterActivity"
+    android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/register_constraintLayout"
@@ -22,6 +23,7 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
+            android:background="@color/textview"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -42,8 +44,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:ems="9"
+                android:ems="11"
                 android:hint="@string/mem_id"
+                android:textColorHint="@color/text"
+                android:textColor="@color/text"
+                android:fontFamily="@font/montserratextralight"
                 android:inputType="textPersonName" />
 
         </LinearLayout>
@@ -54,6 +59,7 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
+            android:background="@color/textview"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_id_layout" >
@@ -74,8 +80,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:ems="9"
+                android:ems="11"
                 android:hint="@string/mem_pw"
+                android:textColorHint="@color/text"
+                android:textColor="@color/text"
+                android:fontFamily="@font/montserratextralight"
                 android:inputType="textPassword" />
         </LinearLayout>
         <LinearLayout
@@ -85,6 +94,7 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
+            android:background="@color/textview"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_pw_layout" >
@@ -105,8 +115,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:ems="9"
+                android:ems="11"
                 android:hint="@string/mem_pwcheck"
+                android:textColorHint="@color/text"
+                android:textColor="@color/text"
+                android:fontFamily="@font/montserratextralight"
                 android:inputType="textPassword" />
         </LinearLayout>
         <LinearLayout
@@ -116,6 +129,7 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
+            android:background="@color/textview"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_passck_layout" >
@@ -136,8 +150,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:ems="9"
+                android:ems="11"
                 android:hint="@string/mem_name"
+                android:textColorHint="@color/text"
+                android:textColor="@color/text"
+                android:fontFamily="@font/montserratextralight"
                 android:inputType="textPersonName" />
         </LinearLayout>
         <LinearLayout
@@ -147,6 +164,7 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
+            android:background="@color/textview"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_name_layout" >
@@ -167,8 +185,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:ems="9"
+                android:ems="11"
                 android:hint="@string/mem_phone"
+                android:textColorHint="@color/text"
+                android:textColor="@color/text"
+                android:fontFamily="@font/montserratextralight"
                 android:inputType="number"  />
         </LinearLayout>
         <LinearLayout
@@ -178,6 +199,7 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
+            android:background="@color/textview"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_phone_layout" >
@@ -198,8 +220,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:ems="9"
+                android:ems="11"
                 android:hint="@string/mem_emergency"
+                android:textColorHint="@color/text"
+                android:textColor="@color/text"
+                android:fontFamily="@font/montserratextralight"
                 android:inputType="number" />
 
         </LinearLayout>
@@ -210,28 +235,18 @@
             android:background="@drawable/circle_background_login_btn_register"
             android:gravity="center"
             android:text="@string/register"
-            android:textSize="24dp"
+            android:textSize="22dp"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:ems="9"
+            android:fontFamily="@font/montserratextralight"
+            android:ems="8"
             android:layout_marginTop="20dp"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_emergency_layout"/>
 
-        <TextView
-            android:id="@+id/register_btn_validate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/circle_background_register_btn_validate"
-            android:text="@string/mem_idcheck"
-            android:textColor="@color/black"
-            android:textSize="15dp"
-            app:layout_constraintStart_toEndOf="@id/register_id_layout"
-            app:layout_constraintTop_toTopOf="@id/register_id_layout"
-            app:layout_constraintBottom_toBottomOf="@id/register_id_layout"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

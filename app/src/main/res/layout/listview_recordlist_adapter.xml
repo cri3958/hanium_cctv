@@ -34,39 +34,45 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" 2020.06.29 "
-                    android:textColor="@color/black" />
+                    android:textColor="@color/text"
+                    android:fontFamily="@font/montserratextralight"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" "
-                    android:textColor="@color/blue" />
+                    android:textColor="@color/blue"
+                    android:fontFamily="@font/montserratextralight"/>
 
                 <TextView
                     android:id="@+id/recordlist_item_object_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1001"
-                    android:textColor="@color/blue" />
+                    android:textColor="@color/blue"
+                    android:fontFamily="@font/montserratextralight"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="번 카메라 "
-                    android:textColor="@color/black" />
+                    android:textColor="@color/text"
+                    android:fontFamily="@font/montserratextralight"/>
 
                 <TextView
                     android:id="@+id/recordlist_item_mem_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="홍길동 어르신"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/montserratextralight"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="님에게 "
-                    android:textColor="@color/black" />
+                    android:textColor="@color/text"
+                    android:fontFamily="@font/montserratextralight"/>
             </LinearLayout>
 
             <LinearLayout
@@ -79,13 +85,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="화재"
-                    android:textColor="@color/red" />
+                    android:textColor="@color/red"
+                    android:fontFamily="@font/montserratextralight"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="로 인한 응급신고가 동작하였습니다."
-                    android:textColor="@color/black"
+                    android:textColor="@color/text"
+                    android:fontFamily="@font/montserratextralight"
                     android:singleLine="true"
                     android:ellipsize="end"/>
             </LinearLayout>

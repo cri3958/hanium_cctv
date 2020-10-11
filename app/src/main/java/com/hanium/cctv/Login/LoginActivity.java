@@ -62,18 +62,17 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity_login);
 
-        CheckInternetState();
-
         et_id = findViewById(R.id.et_id);
         et_pass = findViewById(R.id.et_pass);
         btn_login = findViewById(R.id.login_btn_login);
         btn_register = findViewById(R.id.login_btn_register);
         chk_autologin = findViewById(R.id.chk_autologin);
 
-        setUIratio();
+        //setUIratio();
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View view) {
                 if(CheckInternetState()) {
                     Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);

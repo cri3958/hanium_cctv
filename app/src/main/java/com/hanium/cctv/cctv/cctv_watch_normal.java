@@ -6,16 +6,21 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
 import android.view.Display;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.hanium.cctv.R;
 import com.hanium.cctv.others.DbHelper;
@@ -28,14 +33,13 @@ public class cctv_watch_normal extends AppCompatActivity {
     private String url = "http://52.79.107.136/play.html";
     //private String url = "http://54.180.149.38/play.html";
     private String reason = "보호자의 신고";
-    private TextView text,btn_emergency;
+    private TextView btn_emergency;
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cctv_watch_normal);
 
-        text = findViewById(R.id.normal_text);
         btn_emergency = findViewById(R.id.normal_btn_emergency);
         webView = (WebView) findViewById(R.id.normal_cctv_view);
 
@@ -51,8 +55,17 @@ public class cctv_watch_normal extends AppCompatActivity {
         final DbHelper dbHelper = new DbHelper(cctv_watch_normal.this);
         final String[] object_info = dbHelper.getCCTV_info(num);//0=num,1=pw,2=name,3=place,4=special
 
-        text.setText(object_info[0] + "번 cctv : " + object_info[2]);
-        TelephonyManager telManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+        Toolbar cctv_normal_toolbar = findViewById(R.id.cctv_normal_toolbar);
+        setSupportActionBar(cctv_normal_toolbar);
+        ActionBar cctv_nomral_actionbar = getSupportActionBar();
+        cctv_nomral_actionbar.setDisplayShowCustomEnabled(true);
+        cctv_nomral_actionbar.setDisplayShowTitleEnabled(true);
+        cctv_nomral_actionbar.setTitle(object_info[0] + "번 cctv : " + object_info[2]);
+        cctv_nomral_actionbar.setDisplayHomeAsUpEnabled(true);
+
+
+
+
 
         btn_emergency.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +116,22 @@ public class cctv_watch_normal extends AppCompatActivity {
 
         int standardSize_X = (int) (ScreenSize.x / density);
 
-        text.setTextSize((float)standardSize_X/20);
         btn_emergency.setTextSize((float)standardSize_X/20);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.blank_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
