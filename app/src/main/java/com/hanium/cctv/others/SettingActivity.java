@@ -1,11 +1,8 @@
 package com.hanium.cctv.others;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Point;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -43,8 +40,6 @@ public class SettingActivity extends AppCompatActivity {
         text_1 = (TextView)findViewById(R.id.setting_text_1);
         text_2 = (TextView)findViewById(R.id.setting_text_2);
         text_3 = (TextView)findViewById(R.id.setting_text_3);
-
-        setUIratio();
 
         Toolbar setting_toolbar = findViewById(R.id.setting_toolbar);
         setSupportActionBar(setting_toolbar);
@@ -120,25 +115,6 @@ public class SettingActivity extends AppCompatActivity {
         Intent intent = new Intent(SettingActivity.this, LoginActivity.class);
         startActivity(intent);
         System.exit(0);
-    }
-    public Point getScreenSize(Activity activity) {
-        Display display = activity.getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-
-        return  size;
-    }
-    public void setUIratio(){
-        Point ScreenSize = getScreenSize(this);
-        float density  = getResources().getDisplayMetrics().density;
-
-        int standardSize_X = (int) (ScreenSize.x / density);
-
-        text_1.setTextSize((float)standardSize_X/18);
-        text_2.setTextSize((float)standardSize_X/18);
-        text_3.setTextSize((float)standardSize_X/18);
-
-
     }
 
     @Override

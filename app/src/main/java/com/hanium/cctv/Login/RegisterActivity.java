@@ -1,19 +1,15 @@
 package com.hanium.cctv.Login;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Display;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.RequestQueue;
@@ -28,7 +24,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText et_id, et_pass, et_name, et_passck, et_phone, et_emergency;
     private TextView btn_register,btn_validate;
-    private AlertDialog dialog;
     private boolean validate = false;
 
     @Override
@@ -43,10 +38,6 @@ public class RegisterActivity extends AppCompatActivity {
         et_phone = findViewById(R.id.et_phone);
         et_emergency = findViewById(R.id.et_emergency);
         btn_register = findViewById(R.id.register_btn_register);
-
-        //setUIratio();
-
-
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,22 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
     }
-    public Point getScreenSize(Activity activity) {
-        Display display = activity.getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
 
-        return  size;
-    }
-    public void setUIratio(){
-        Point ScreenSize = getScreenSize(this);
-        float density  = getResources().getDisplayMetrics().density;
-
-        int standardSize_X = (int) (ScreenSize.x / density);
-
-        btn_register.setTextSize((float)standardSize_X/19);
-        btn_validate.setTextSize((float)standardSize_X/28);
-    }
     public void register(){
         if (validate) {
             if (et_id.getText().toString().isEmpty() || et_pass.getText().toString().isEmpty() || et_name.getText().toString().isEmpty() || et_passck.getText().toString().isEmpty())

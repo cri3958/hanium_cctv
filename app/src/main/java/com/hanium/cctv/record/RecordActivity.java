@@ -1,14 +1,16 @@
 package com.hanium.cctv.record;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.SparseBooleanArray;
-import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.AbsListView;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -18,7 +20,6 @@ import androidx.appcompat.widget.Toolbar;
 import com.hanium.cctv.R;
 import com.hanium.cctv.others.DbHelper;
 
-import java.util.ArrayList;
 
 public class RecordActivity extends AppCompatActivity {
     private Context context = this;
@@ -44,7 +45,7 @@ public class RecordActivity extends AppCompatActivity {
 
     private void initAll() {
         setupAdapter();
-        //setupListViewMultiSelect(); >>기존 액션바와 새로 생성되는 툴바가 theme가 다름
+        setupItemClick();
     }
 
     private void setupAdapter() {
@@ -54,59 +55,32 @@ public class RecordActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
-    private void setupListViewMultiSelect() {
-        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
-        listView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
-            @Override
-            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-                final int checkedCount = listView.getCheckedItemCount();
-                mode.setTitle(checkedCount + "개 선택됨");
-                if (checkedCount == 0) mode.finish();
-            }
+    private void setupItemClick() {
 
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                MenuInflater menuInflater = mode.getMenuInflater();
-                menuInflater.inflate(R.menu.toolbar_action_mode, menu);
-                record_actionbar.hide();
-                return true;
-            }
-
-            @Override
-            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onActionItemClicked(final ActionMode mode, MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.action_delete:
-                        ArrayList<record> removelist = new ArrayList<>();
-                        SparseBooleanArray checkedItems = listView.getCheckedItemPositions();
-                        for (int i = 0; i < checkedItems.size(); i++) {
-                            int key = checkedItems.keyAt(i);
-                            if (checkedItems.get(key)) {
-                                db.deleteRECORDLISTById(adapter.getItem(key));
-                                removelist.add(adapter.getRecordlist().get(key));
-                            }
-                        }
-                        adapter.getRecordlist().removeAll(removelist);
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, long id) {
+                AlertDialog.Builder dlg = new AlertDialog.Builder(RecordActivity.this);
+                dlg.setMessage("기록을 삭제하시겠습니까?");
+                dlg.setPositiveButton("네", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        db.deleteRECORDLISTById(adapter.getItem(position));
+                        adapter.getRecordlist().remove(position);
                         db.updateRECORDLIST(adapter.getRecord());
                         adapter.notifyDataSetChanged();
-                        mode.finish();
-                        return true;
+                        Toast.makeText(getApplicationContext(), "삭제됨.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dlg.setNegativeButton("아니오", null);
 
-                    default:
-                        return false;
-                }
-            }
-
-            @Override
-            public void onDestroyActionMode(ActionMode mode) {
-                record_actionbar.show();
+                AlertDialog alertDialog = dlg.create();
+                alertDialog.show();
+                return true;
             }
         });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -116,7 +90,7 @@ public class RecordActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;

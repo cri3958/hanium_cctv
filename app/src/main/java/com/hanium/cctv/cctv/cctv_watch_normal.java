@@ -1,12 +1,9 @@
 package com.hanium.cctv.cctv;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -42,8 +39,6 @@ public class cctv_watch_normal extends AppCompatActivity {
 
         btn_emergency = findViewById(R.id.normal_btn_emergency);
         webView = (WebView) findViewById(R.id.normal_cctv_view);
-
-        setUIratio();
 
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(url);
@@ -103,21 +98,7 @@ public class cctv_watch_normal extends AppCompatActivity {
             return true;
         }
     }
-    public Point getScreenSize(Activity activity) {
-        Display display = activity.getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
 
-        return  size;
-    }
-    public void setUIratio(){
-        Point ScreenSize = getScreenSize(this);
-        float density  = getResources().getDisplayMetrics().density;
-
-        int standardSize_X = (int) (ScreenSize.x / density);
-
-        btn_emergency.setTextSize((float)standardSize_X/20);
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();

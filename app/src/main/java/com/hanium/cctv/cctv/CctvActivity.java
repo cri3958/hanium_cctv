@@ -1,9 +1,11 @@
 package com.hanium.cctv.cctv;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.SparseBooleanArray;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,7 +20,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -31,8 +32,6 @@ import com.hanium.cctv.others.DbHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 public class CctvActivity extends AppCompatActivity {
     private Context context = this;
@@ -62,7 +61,7 @@ public class CctvActivity extends AppCompatActivity {
 
     private void initAll() {
         setupAdapter();
-        //setupListViewMultiSelect(); //기존 액션바와 새로 생성되는 툴바가 theme가 다름
+        setupItemClick();
         setupCustomDialog();
     }
 
@@ -73,100 +72,39 @@ public class CctvActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
-    private void setupListViewMultiSelect() {//여길 새로 만드는게 좋을수도  adapter에 처음부터 체크박스를 넣고 삭제버튼도 visibile로 해두기 >> 각 listview의 아이템의 체크박스 선택여부를 알수 있나?
-        //listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
-        //listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
-        listView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+    private void setupItemClick(){  //야호!
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                final int checkedCount = listView.getCheckedItemCount();
-                cctv_actionbar.setTitle(checkedCount + "개 선택됨");
-                action_delete.setVisibility(View.VISIBLE);
-                action_delete.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        ArrayList<cctv> removelist = new ArrayList<>();
-                        SparseBooleanArray checkedItems = listView.getCheckedItemPositions();
-                        for (int i = 0; i < checkedItems.size(); i++) {
-                            int key = checkedItems.keyAt(i);
-                            if (checkedItems.get(key)) {
-                                db.deleteCCTVLISTById(adapter.getItem(key));
-                                removelist.add(adapter.getCctvlist().get(key));
-                            }
-                        }
-                        adapter.getCctvlist().removeAll(removelist);
-                        db.updateCCTVLIST(adapter.getCctv());
-                        adapter.notifyDataSetChanged();
-                        cctv_actionbar.setTitle(R.string.cctv_actionbar);
-                        action_delete.setVisibility(View.INVISIBLE);
-                    }
-                });
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                cctv_actionbar.setTitle(R.string.cctv_actionbar);
-                action_delete.setVisibility(View.INVISIBLE);
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), cctv_watch_normal.class);
+                intent.putExtra("object_num", adapter.getItem(position).getNumber());
+                startActivity(intent);
             }
         });
-        /*listView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-                final int checkedCount = listView.getCheckedItemCount();
-                //mode.setTitle(checkedCount + "개 선택됨");
-                cctv_actionbar.setTitle(checkedCount + "개 선택됨");
-                if (checkedCount == 0) mode.finish();
-            }
-            @Override
-            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                //MenuInflater menuInflater = mode.getMenuInflater();
-                //menuInflater.inflate(R.menu.toolbar_action_mode, menu);
-                //cctv_actionbar.hide();
-                menu.close();
-                action_delete.setVisibility(View.VISIBLE);
-                return true;
-            }
-
-            @Override
-            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                cctv_actionbar.setTitle(R.string.cctv_actionbar);
-                mode.hide(ActionMode.DEFAULT_HIDE_DURATION);
-                mode.setCustomView(null);
-                return true;
-            }
-
-            @Override
-            public boolean onActionItemClicked(final ActionMode mode, MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.action_delete:
-                        ArrayList<cctv> removelist = new ArrayList<>();
-                        SparseBooleanArray checkedItems = listView.getCheckedItemPositions();
-                        for (int i = 0; i < checkedItems.size(); i++) {
-                            int key = checkedItems.keyAt(i);
-                            if (checkedItems.get(key)) {
-                                db.deleteCCTVLISTById(adapter.getItem(key));
-                                removelist.add(adapter.getCctvlist().get(key));
-                            }
-                        }
-                        adapter.getCctvlist().removeAll(removelist);
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, long id) {
+                AlertDialog.Builder dlg = new AlertDialog.Builder(CctvActivity.this);
+                dlg.setMessage("CCTV를 삭제하시겠습니까?");
+                dlg.setPositiveButton("네", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int id)
+                    {
+                        db.deleteCCTVLISTById(adapter.getItem(position));
+                        adapter.getCctvlist().remove(position);
                         db.updateCCTVLIST(adapter.getCctv());
                         adapter.notifyDataSetChanged();
-                        mode.finish();
-                        return true;
+                        Toast.makeText(getApplicationContext(),"삭제됨.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dlg.setNegativeButton("아니오", null);
 
-                    default:
-                        return false;
-                }
+                AlertDialog alertDialog = dlg.create();
+                alertDialog.show();
+                return true;
             }
-
-            @Override
-            public void onDestroyActionMode(ActionMode mode) {
-                //cctv_actionbar.show();
-                cctv_actionbar.setTitle(R.string.cctv_actionbar);
-                action_delete.setVisibility(View.INVISIBLE);
-            }
-        });*/
+        });
     }
 
     private void setupCustomDialog() {
