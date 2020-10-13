@@ -4,14 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
-import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +40,7 @@ public class CctvActivity extends AppCompatActivity {
     private CCTVAdapter adapter;
     private DbHelper db;
     private ActionBar cctv_actionbar;
+    private ImageView action_delete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +55,14 @@ public class CctvActivity extends AppCompatActivity {
         cctv_actionbar.setDisplayShowTitleEnabled(true);
         cctv_actionbar.setTitle(R.string.cctv_actionbar);
         cctv_actionbar.setDisplayHomeAsUpEnabled(true);
+
+        action_delete = findViewById(R.id.cctv_action_delete);
+
     }
 
     private void initAll() {
         setupAdapter();
-        //setupListViewMultiSelect(); >>기존 액션바와 새로 생성되는 툴바가 theme가 다름
+        //setupListViewMultiSelect(); //기존 액션바와 새로 생성되는 툴바가 theme가 다름
         setupCustomDialog();
     }
 
@@ -69,26 +73,67 @@ public class CctvActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
-    private void setupListViewMultiSelect() {
-        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
-        listView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+    private void setupListViewMultiSelect() {//여길 새로 만드는게 좋을수도  adapter에 처음부터 체크박스를 넣고 삭제버튼도 visibile로 해두기 >> 각 listview의 아이템의 체크박스 선택여부를 알수 있나?
+        //listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+        //listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
+        listView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                final int checkedCount = listView.getCheckedItemCount();
+                cctv_actionbar.setTitle(checkedCount + "개 선택됨");
+                action_delete.setVisibility(View.VISIBLE);
+                action_delete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ArrayList<cctv> removelist = new ArrayList<>();
+                        SparseBooleanArray checkedItems = listView.getCheckedItemPositions();
+                        for (int i = 0; i < checkedItems.size(); i++) {
+                            int key = checkedItems.keyAt(i);
+                            if (checkedItems.get(key)) {
+                                db.deleteCCTVLISTById(adapter.getItem(key));
+                                removelist.add(adapter.getCctvlist().get(key));
+                            }
+                        }
+                        adapter.getCctvlist().removeAll(removelist);
+                        db.updateCCTVLIST(adapter.getCctv());
+                        adapter.notifyDataSetChanged();
+                        cctv_actionbar.setTitle(R.string.cctv_actionbar);
+                        action_delete.setVisibility(View.INVISIBLE);
+                    }
+                });
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                cctv_actionbar.setTitle(R.string.cctv_actionbar);
+                action_delete.setVisibility(View.INVISIBLE);
+            }
+        });
+        /*listView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             @Override
             public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
                 final int checkedCount = listView.getCheckedItemCount();
-                mode.setTitle(checkedCount + "개 선택됨");
+                //mode.setTitle(checkedCount + "개 선택됨");
+                cctv_actionbar.setTitle(checkedCount + "개 선택됨");
                 if (checkedCount == 0) mode.finish();
             }
             @Override
             public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                MenuInflater menuInflater = mode.getMenuInflater();
-                menuInflater.inflate(R.menu.toolbar_action_mode, menu);
-                cctv_actionbar.hide();
+                //MenuInflater menuInflater = mode.getMenuInflater();
+                //menuInflater.inflate(R.menu.toolbar_action_mode, menu);
+                //cctv_actionbar.hide();
+                menu.close();
+                action_delete.setVisibility(View.VISIBLE);
                 return true;
             }
 
             @Override
             public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                return false;
+                cctv_actionbar.setTitle(R.string.cctv_actionbar);
+                mode.hide(ActionMode.DEFAULT_HIDE_DURATION);
+                mode.setCustomView(null);
+                return true;
             }
 
             @Override
@@ -117,9 +162,11 @@ public class CctvActivity extends AppCompatActivity {
 
             @Override
             public void onDestroyActionMode(ActionMode mode) {
-                cctv_actionbar.show();
+                //cctv_actionbar.show();
+                cctv_actionbar.setTitle(R.string.cctv_actionbar);
+                action_delete.setVisibility(View.INVISIBLE);
             }
-        });
+        });*/
     }
 
     private void setupCustomDialog() {

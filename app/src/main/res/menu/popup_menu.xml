@@ -2,7 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/play_popup"
-        android:title="@string/play_popup"/>
+        android:title="@string/play_popup"
+        />
     <item
         android:id="@+id/delete_popup"
         android:title="@string/delete_popup" />

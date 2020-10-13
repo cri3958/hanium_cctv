@@ -2,6 +2,7 @@ package com.hanium.cctv.cctv;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -67,22 +68,11 @@ public class CCTVAdapter extends ArrayAdapter<cctv> {
         holder.cctvlist_popup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final PopupMenu popup = new PopupMenu(mActivity, holder.cctvlist_popup);
+                final PopupMenu popup = new PopupMenu(new ContextThemeWrapper(mActivity, R.style.CustomPopupTheme), holder.cctvlist_popup);
                 final DbHelper db = new DbHelper(mActivity);
                 popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
 
-                /*int positionOfMenuItem = 0;
-                MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
-                SpannableString s = new SpannableString("CCTV 확인하기");
-                s.setSpan(new ForegroundColorSpan(Color.parseColor("#D9D9D9")), 0, s.length(), 0);
-                item.setTitle(s);
 
-                positionOfMenuItem = 1;
-                item = popup.getMenu().getItem(positionOfMenuItem);
-                s = new SpannableString("CCTV 등록취소");
-                s.setSpan(new ForegroundColorSpan(Color.parseColor("#D9D9D9")), 0, s.length(), 0);
-                item.
-                item.setTitle(s);*/
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
@@ -135,6 +125,7 @@ public class CCTVAdapter extends ArrayAdapter<cctv> {
     public cctv getCctv() {
         return cctv;
     }
+
 
 
 }

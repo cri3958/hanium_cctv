@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:itemBackground">@color/red</item>
     </style>
 
     <style name="Theme.Dark" parent="Theme.AppCompat.Light.NoActionBar"> <!--출처 :https://jabstorage.tistory.com/31-->
@@ -35,5 +36,21 @@
     <style name="ToolbarSubtitleStyle.Dark" parent="TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
         <item name="android:textColor">@color/text</item> <!-- Toolbar의 서브타이틀 텍스트 색상-->
         <item name="android:textSize">12dp</item> <!-- Toolbar의 서브타이틀 텍스트 사이즈-->
+    </style>
+
+
+
+    <style name="CustomPopupTheme" parent="ThemeOverlay.AppCompat.Dark">
+        <!-- if using android.widget.PopupMenu -->
+        <item name="android:popupMenuStyle">@style/PopupMenu</item>
+        <!-- if using android.support.v7.widget.PopupMenu -->
+        <item name="popupMenuStyle">@style/PopupMenu</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">@font/montserratextralight</item>
+        <item name="android:itemBackground">@drawable/popup_menu_itembox</item>
+    </style>
+
+    <style name="PopupMenu" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:popupBackground">@color/red</item>
     </style>
 </resources>
