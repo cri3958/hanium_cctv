@@ -38,8 +38,7 @@
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
                     android:text="cctvnum"
-                    android:textColor="@color/text"
-                    android:fontFamily="@font/montserratextralight"/>
+                    android:textColor="@color/text" />
 
                 <TextView
                     android:id="@+id/cctvlist_item_name"
@@ -51,8 +50,7 @@
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
                     android:text="테스트cctv"
-                    android:textColor="@color/text"
-                    android:fontFamily="@font/montserratextralight" />
+                    android:textColor="@color/text" />
             </LinearLayout>
 
             <TextView
@@ -64,8 +62,7 @@
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:text="서울특별시 강서구 등촌로 53길 10"
-                android:textColor="@color/text"
-                android:fontFamily="@font/montserratextralight" />
+                android:textColor="@color/text" />
 
             <TextView
                 android:id="@+id/cctvlist_item_speical"
@@ -76,8 +73,7 @@
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:text="종합감기"
-                android:textColor="@color/text"
-                android:fontFamily="@font/montserratextralight" />
+                android:textColor="@color/text" />
         </LinearLayout>
 
 

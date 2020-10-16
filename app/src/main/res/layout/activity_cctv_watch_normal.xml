@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:background="@drawable/underbar"
         android:minHeight="?attr/actionBarSize"
-        android:theme="@style/Theme.Dark" />
+        android:theme="@style/Theme.Checkcctv" />
 
     <WebView
         android:id="@+id/normal_cctv_view"
@@ -35,7 +35,7 @@
         android:paddingBottom="5dp"
         android:text="@string/emergency"
         android:textColor="@color/text"
-        android:fontFamily="@font/montserratextralight"
+        android:layout_marginTop="20dp"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_below="@id/normal_cctv_view" />

@@ -52,17 +52,5 @@
         android:theme="@style/Theme.Dark"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/cctv_action_delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_delete"
-        android:scaleType="fitCenter"
-        android:layout_marginEnd="20dp"
-        android:visibility="invisible"
-        app:layout_constraintTop_toTopOf="@id/cctv_toolbar"
-        app:layout_constraintBottom_toBottomOf="@id/cctv_toolbar"
-        app:layout_constraintEnd_toEndOf="@id/cctv_toolbar"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

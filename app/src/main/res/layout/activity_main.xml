@@ -20,7 +20,8 @@
             android:id="@+id/main_text_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="안녕하세요  "
+            android:text="HELLO  "
+            android:fontFamily="@font/montserratextralight"
             android:textColor="@color/text"
             android:textSize="20dp" />
 
@@ -29,6 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="테스트"
+            android:fontFamily="@font/montserratextralight"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="20dp" />
@@ -37,7 +39,8 @@
             android:id="@+id/main_text_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="님"
+            android:text="!!"
+            android:fontFamily="@font/montserratextralight"
             android:textColor="@color/text"
             android:textSize="20dp" />
     </LinearLayout>
@@ -79,7 +82,7 @@
         android:gravity="center"
         android:text="CCTV"
         android:textColor="@color/text"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <ImageView
@@ -111,18 +114,18 @@
         android:layout_toEndOf="@+id/main_image_record"
         android:layout_alignEnd="@id/btn_record"
         android:gravity="center"
-        android:text="기록"
+        android:text="RECORD"
         android:textColor="@color/text"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/btn_setting"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         app:srcCompat="@drawable/ic_setting" />
 </RelativeLayout>

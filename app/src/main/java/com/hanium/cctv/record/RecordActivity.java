@@ -60,9 +60,9 @@ public class RecordActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, long id) {
-                AlertDialog.Builder dlg = new AlertDialog.Builder(RecordActivity.this);
-                dlg.setMessage("기록을 삭제하시겠습니까?");
-                dlg.setPositiveButton("네", new DialogInterface.OnClickListener() {
+                AlertDialog.Builder dlg = new AlertDialog.Builder(RecordActivity.this, R.style.MyAlertDialogStyle);
+                dlg.setTitle("Really want delete record?");
+                dlg.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         db.deleteRECORDLISTById(adapter.getItem(position));
@@ -72,9 +72,16 @@ public class RecordActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "삭제됨.", Toast.LENGTH_SHORT).show();
                     }
                 });
-                dlg.setNegativeButton("아니오", null);
+                dlg.setNegativeButton("NO", null);
 
-                AlertDialog alertDialog = dlg.create();
+                final AlertDialog alertDialog = dlg.create();
+                alertDialog.setOnShowListener( new DialogInterface.OnShowListener() {
+                    @Override public void onShow(DialogInterface arg0) {
+                        alertDialog.getButton(android.app.AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.blue));
+                        alertDialog.getButton(android.app.AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.red));
+                    }
+                });
+
                 alertDialog.show();
                 return true;
             }

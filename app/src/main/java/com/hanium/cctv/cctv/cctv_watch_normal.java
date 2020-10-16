@@ -55,7 +55,8 @@ public class cctv_watch_normal extends AppCompatActivity {
         ActionBar cctv_nomral_actionbar = getSupportActionBar();
         cctv_nomral_actionbar.setDisplayShowCustomEnabled(true);
         cctv_nomral_actionbar.setDisplayShowTitleEnabled(true);
-        cctv_nomral_actionbar.setTitle(object_info[0] + "번 cctv : " + object_info[2]);
+        //cctv_nomral_actionbar.setTitle(object_info[0] + "번 cctv : " + object_info[2]);
+        cctv_nomral_actionbar.setTitle("CCTV NUM : "+object_info[0]+"    "+object_info[2]);
         cctv_nomral_actionbar.setDisplayHomeAsUpEnabled(true);
 
 

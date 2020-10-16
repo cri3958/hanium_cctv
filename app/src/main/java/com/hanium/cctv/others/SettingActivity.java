@@ -75,10 +75,9 @@ public class SettingActivity extends AppCompatActivity {
         Setting_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder dlg = new AlertDialog.Builder(SettingActivity.this);
-                dlg.setTitle("*주의*");
-                dlg.setMessage("정말로 탈퇴하시겠습니까?");
-                dlg.setPositiveButton("예", new DialogInterface.OnClickListener() {
+                AlertDialog.Builder dlg = new AlertDialog.Builder(SettingActivity.this, R.style.MyAlertDialogStyle);
+                dlg.setTitle("Really want withdrawal?");
+                dlg.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -104,8 +103,17 @@ public class SettingActivity extends AppCompatActivity {
                         queue.add(deleteUserRequest);
                     }
                 });
-                dlg.setNegativeButton("아니요", null);
-                dlg.show();
+                dlg.setNegativeButton("NO", null);
+
+                final AlertDialog alertDialog = dlg.create();
+                alertDialog.setOnShowListener( new DialogInterface.OnShowListener() {
+                    @Override public void onShow(DialogInterface arg0) {
+                        alertDialog.getButton(android.app.AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.blue));
+                        alertDialog.getButton(android.app.AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.red));
+                    }
+                });
+
+                alertDialog.show();
             }
         });
     }
