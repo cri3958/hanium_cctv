@@ -143,6 +143,19 @@ public class DbHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    public String get1CCTVPLACE(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + CCTVLIST + " ORDER BY " + CCTV_NUMBER, null);
+        cursor.moveToFirst();
+        return cursor.getString(cursor.getColumnIndex(CCTV_PLACE));
+    }
+
+    public int countCCTVLIST(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + CCTVLIST , null);
+        return cursor.getCount();
+    }
+
     public void insertRECORDLIST(String date, String object_num, String mem_name, String reason) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

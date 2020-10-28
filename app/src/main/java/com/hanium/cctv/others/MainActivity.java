@@ -5,7 +5,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,8 +20,8 @@ import com.hanium.cctv.cctv.CctvActivity;
 import com.hanium.cctv.record.RecordActivity;
 
 public class MainActivity extends AppCompatActivity {
-    TextView text1,mem_name,text3;
-    ImageView btn_cctv,btn_record,btn_setting,image_cctv,image_record;
+    LinearLayout btn_cctv,btn_record,btn_setting;
+    TextView info_connect,info_place;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,22 +38,20 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("FCM Log", "FCM 토큰 : " + token);
             }
         });
-        text1 = (TextView)findViewById(R.id.main_text_1);
-        text3 = (TextView)findViewById(R.id.main_text_3);
-        mem_name = (TextView) findViewById(R.id.mem_name);
-        btn_cctv = (ImageView) findViewById(R.id.btn_cctv);
-        btn_record = (ImageView) findViewById(R.id.btn_record);
-        btn_setting = (ImageView) findViewById(R.id.btn_setting);
-        image_cctv = (ImageView) findViewById(R.id.main_image_cctv);
-        image_record = (ImageView) findViewById(R.id.main_image_record);
+
+        btn_cctv = (LinearLayout) findViewById(R.id.main_layout_cctv);
+        btn_record = (LinearLayout) findViewById(R.id.main_layout_record);
+        btn_setting = (LinearLayout) findViewById(R.id.main_layout_setting);
+        info_connect = (TextView) findViewById(R.id.main_info_connect);
+        info_place = (TextView) findViewById(R.id.main_info_place);
 
         final Intent inIntent = getIntent();
-        mem_name.setText(inIntent.getStringExtra("mem_name"));
         btn_cctv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CctvActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         btn_record.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +71,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        DbHelper dbHelper = new DbHelper(this);
+        int cctvnum = dbHelper.countCCTVLIST();
+        Log.d("@@@",cctvnum+"");
+        String cctvplace = dbHelper.get1CCTVPLACE();
+        if(cctvplace.length()>9)
+            cctvplace = cctvplace.substring(0,9).concat("...");
+
+        if(cctvnum==1){
+            info_place.setText(cctvplace);
+        }else{
+            cctvplace = cctvplace.concat("\n외 "+(cctvnum-1)+"곳 ");
+            info_place.setText(cctvplace);
+        }
+        info_connect.setText(cctvnum+"");
     }
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) { //화면회전 방지

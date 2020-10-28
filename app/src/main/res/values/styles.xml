@@ -65,11 +65,11 @@
 
     <!--AlertDialog의 스타일-->
     <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowLightStatusBar">false</item> <!--Status Bar 아이콘의 색상 true:검은 아이콘, false:흰 아이콘-->
         <item name="colorAccent">@color/text</item>
-        <item name="android:background">@color/background</item>
+        <item name="android:background">@color/textview</item>
         <item name="android:textColor">@color/text</item>
         <item name="android:fontFamily">@font/montserratextralight</item>
-
     </style>
 
 </resources>

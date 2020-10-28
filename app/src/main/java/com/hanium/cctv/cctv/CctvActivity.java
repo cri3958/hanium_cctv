@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -27,6 +28,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.hanium.cctv.R;
 import com.hanium.cctv.others.DbHelper;
+import com.hanium.cctv.others.MainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -102,7 +104,7 @@ public class CctvActivity extends AppCompatActivity {
                         alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.red));
                     }
                 });
-
+                alertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
 
                 alertDialog.show();
                 return true;
@@ -228,6 +230,8 @@ public class CctvActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
+                Intent intent = new Intent(CctvActivity.this, MainActivity.class);
+                startActivity(intent);
                 finish();
                 break;
         }

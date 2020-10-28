@@ -7,5 +7,13 @@
     <font
         android:fontStyle="normal"
         android:fontWeight="400"
+        android:font="@font/montserratextrabold"/>
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/montserratsemibold"/>
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
         android:font="@font/yun330"/>
 </font-family>

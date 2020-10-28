@@ -26,6 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="11"
+            android:textColor="@color/text"
             android:fontFamily="@font/montserratextralight"
             android:inputType="number"/>
     </LinearLayout>
@@ -51,6 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="11"
+            android:textColor="@color/text"
             android:fontFamily="@font/montserratextralight"
             android:inputType="numberPassword" />
 
@@ -77,6 +79,7 @@
             android:layout_height="wrap_content"
             android:hint="홍길동"
             android:ems="11"
+            android:textColor="@color/text"
             android:textColorHint="@color/text"
             android:fontFamily="@font/montserratextralight"
             android:inputType="textPersonName"/>
@@ -103,6 +106,7 @@
             android:layout_height="wrap_content"
             android:hint="서울특별시 영등포구 ~~~"
             android:ems="11"
+            android:textColor="@color/text"
             android:textColorHint="@color/text"
             android:fontFamily="@font/montserratextralight"
             android:inputType="textPersonName"/>
@@ -129,6 +133,7 @@
             android:layout_height="wrap_content"
             android:hint="고혈압, 당뇨, ~~~"
             android:ems="11"
+            android:textColor="@color/text"
             android:textColorHint="@color/text"
             android:fontFamily="@font/montserratextralight"
             android:inputType="textPersonName"/>
@@ -141,7 +146,7 @@
         android:orientation="horizontal">
         <TextView
             android:id="@+id/btn_cctvlist_cancel"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/cancel"
             android:gravity="center"
@@ -154,7 +159,7 @@
             android:textColor="@color/red" />
         <TextView
             android:id="@+id/btn_cctvlist_save"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/save"
             android:gravity="center"

@@ -32,7 +32,7 @@
             android:textColor="@color/white"
             android:textSize="30dp"
             android:textStyle="bold"
-            android:fontFamily="@font/yun330"
+            android:fontFamily="@font/montserratsemibold"
             android:layout_marginTop="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

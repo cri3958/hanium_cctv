@@ -35,4 +35,16 @@
     <string name="cctv_actionbar">CCTV LIST</string>
     <string name="record_actionbar">REPORT RECORD</string>
     <string name="setting_actionbar">SETTING</string>
+
+    <string name="main_cctv">CCTV</string>
+    <string name="main_cctv_sub">Show you your CCTV screen through streaming</string>
+    <string name="main_record">RECORD</string>
+    <string name="main_record_sub">Show you the records of the rescue request detection, etc</string>
+    <string name="main_setting">SETTING</string>
+    <string name="main_cctvplace">"CCTV 설치 장소 : "</string>
+    <string name="main_cctvstate">"CCTV 상태 : "</string>
+    <string name="main_cctvconnect">"CCTV 연동 : "</string>
+    <string name="main_recordreport">\u003C주요 감지 사항\u003E</string>
+    <string name="main_blind">Blind Mode</string>
+    <string name="main_autoreport">Auto - Emergency Report</string>
 </resources>
