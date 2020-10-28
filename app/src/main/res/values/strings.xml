@@ -2,10 +2,12 @@
     <string name="app_name">HOUSE KEEPER</string>
     <string name="eng_app_name">HOUSE KEEPER</string>
 
+    <!--login-->
     <string name="autologin">AUTO LOG IN</string>
     <string name="login">LOG IN</string>
     <string name="register">Sign Up</string>
 
+    <!--register-->
     <string name="mem_id">USER ID</string>
     <string name="mem_pw">PASSWORD</string>
     <string name="mem_pwcheck">PASSWORD CHECK</string>
@@ -13,9 +15,7 @@
     <string name="mem_phone">USER PHONE</string>
     <string name="mem_emergency">EMERGENCY PHONE</string>
 
-    <string name="btn_cctvcheck">CHECK CCTV</string>
-    <string name="btn_logout">LOG OUT</string>
-
+    <!--addwork cctv dialog-->
     <string name="cctvlist_cctvnum">CCTV ID : </string>
     <string name="cctvlist_cctvpw">CCTV PW : </string>
     <string name="cctvlist_name">CCTV NAME : </string>
@@ -24,18 +24,23 @@
     <string name="save">SAVE</string>
     <string name="cancel">"CANCEL"</string>
 
+    <!--emergencylayout-->
     <string name="emergency">REPORT EMERGENCY</string>
 
+    <!--setting-->
     <string name="Setting_1">LOG OUT</string>
     <string name="Setting_2">MODIFICATION MEMBER INFORMATION</string>
     <string name="Setting_3">DELETE MEMBER INFORMATION</string>
 
+    <!--modification-->
     <string name="update">MODIFICATION</string>
 
+    <!--actionbar-->
     <string name="cctv_actionbar">CCTV LIST</string>
     <string name="record_actionbar">REPORT RECORD</string>
     <string name="setting_actionbar">SETTING</string>
 
+    <!--main-->
     <string name="main_cctv">CCTV</string>
     <string name="main_cctv_sub">Show you your CCTV screen through streaming</string>
     <string name="main_record">RECORD</string>
