@@ -9,9 +9,9 @@ import java.util.Map;
 
 public class LoginRequest extends StringRequest {
 
-    final static private String URL="http://leehojin0207.dothome.co.kr/Login.php";
+    final static private String URL = "http://leehojin0207.dothome.co.kr/Login.php";
     //final static private String URL="http://13.125.249.248/Login.php";
-    private Map<String,String> map;
+    private Map<String, String> map;
 
     public LoginRequest(String mem_id, String mem_pw, Response.Listener<String> listener) {
         super(Method.POST, URL, listener, null);

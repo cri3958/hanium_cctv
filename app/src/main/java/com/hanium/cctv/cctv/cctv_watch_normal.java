@@ -23,6 +23,9 @@ import androidx.appcompat.widget.Toolbar;
 import com.hanium.cctv.R;
 import com.hanium.cctv.others.DbHelper;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -31,7 +34,10 @@ public class cctv_watch_normal extends AppCompatActivity {
     private String url = "http://52.79.107.136/play.html";
     //private String url = "http://54.180.149.38/play.html";
     private String reason = "보호자의 신고";
+    String file_autoreport = "data_autoreport.txt";
+
     private TextView btn_emergency;
+
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +54,7 @@ public class cctv_watch_normal extends AppCompatActivity {
         webView.setVerticalScrollBarEnabled(false);
         webView.setWebViewClient(new WebViewClientClass());
 
-        WebSettings settings =  webView.getSettings();
+        WebSettings settings = webView.getSettings();
         settings.setLoadWithOverviewMode(true);
         settings.setUseWideViewPort(true);
 
@@ -64,11 +70,8 @@ public class cctv_watch_normal extends AppCompatActivity {
         cctv_nomral_actionbar.setDisplayShowCustomEnabled(true);
         cctv_nomral_actionbar.setDisplayShowTitleEnabled(true);
         //cctv_nomral_actionbar.setTitle(object_info[0] + "번 cctv : " + object_info[2]);
-        cctv_nomral_actionbar.setTitle("CCTV NUM : "+object_info[0]+"    "+object_info[2]);
+        cctv_nomral_actionbar.setTitle("CCTV NUM : " + object_info[0] + "    " + object_info[2]);
         cctv_nomral_actionbar.setDisplayHomeAsUpEnabled(true);
-
-
-
 
 
         btn_emergency.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +82,18 @@ public class cctv_watch_normal extends AppCompatActivity {
                 SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm");
                 String formatDate = sdfNow.format(date);
 
-                dbHelper.insertRECORDLIST(formatDate, object_info[0], object_info[2], reason);
+                File fFile3 = new File("/data/data/com.hanium.cctv/files/" + file_autoreport);// blind 데이터 불러오기
+                if (fFile3.exists()) {
+                    try {
+                        FileInputStream inFs = openFileInput(file_autoreport);
+                        byte[] txt = new byte[500];
+                        inFs.read(txt);
+                        if (new String(txt).trim().equals("true"))
+                            dbHelper.insertRECORDLIST(formatDate, object_info[0], object_info[2], reason);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
 
                 Intent message = new Intent(Intent.ACTION_SENDTO);
                 String emergencytext = "'" + getString(R.string.app_name) + "' 어플에서 발송되는 응급문자입니다.\n이름 : " + object_info[2] + "\n위치 : " + object_info[3] + "\n특이사항 : " + object_info[4] + "\n신고사유 : " + reason;
@@ -117,7 +131,7 @@ public class cctv_watch_normal extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;

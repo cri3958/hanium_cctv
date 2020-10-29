@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <font-family xmlns:android="http://schemas.android.com/apk/res/android">
     <font
+        android:font="@font/montserratextralight"
         android:fontStyle="normal"
-        android:fontWeight="400"
-        android:font="@font/montserratextralight"/>
+        android:fontWeight="400" />
     <font
+        android:font="@font/montserratextrabold"
         android:fontStyle="normal"
-        android:fontWeight="400"
-        android:font="@font/montserratextrabold"/>
+        android:fontWeight="400" />
     <font
+        android:font="@font/montserratsemibold"
         android:fontStyle="normal"
-        android:fontWeight="400"
-        android:font="@font/montserratsemibold"/>
+        android:fontWeight="400" />
     <font
+        android:font="@font/yun330"
         android:fontStyle="normal"
-        android:fontWeight="400"
-        android:font="@font/yun330"/>
+        android:fontWeight="400" />
 </font-family>

@@ -34,7 +34,7 @@ public class CCTVAdapter extends ArrayAdapter<cctv> {
         String Num = Objects.requireNonNull(getItem(position)).getNumber();
         String pw = Objects.requireNonNull(getItem(position)).getPw();
         String Name = Objects.requireNonNull(getItem(position)).getName();
-        String Place= Objects.requireNonNull(getItem(position)).getPlace();
+        String Place = Objects.requireNonNull(getItem(position)).getPlace();
         String Special = Objects.requireNonNull(getItem(position)).getSpecial();
 
         cctv = new cctv(Num, pw, Name, Place, Special);
@@ -87,7 +87,6 @@ public class CCTVAdapter extends ArrayAdapter<cctv> {
     public cctv getCctv() {
         return cctv;
     }
-
 
 
 }

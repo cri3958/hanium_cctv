@@ -5,7 +5,8 @@ public class record {
     private String date, object_num, mem_name, reason;
     private int id;
 
-    public record() { }
+    public record() {
+    }
 
     public record(String date, String object_num, String mem_name, String reason) {
         this.date = date;

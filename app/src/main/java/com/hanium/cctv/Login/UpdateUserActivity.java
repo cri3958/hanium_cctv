@@ -20,7 +20,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class UpdateUserActivity extends AppCompatActivity {
-    TextView update_id,update_pw,update_name,update_phone,update_emergency, btn_update;
+    TextView update_id, update_pw, update_name, update_phone, update_emergency, btn_update;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,19 +87,21 @@ public class UpdateUserActivity extends AppCompatActivity {
         });
 
     }
+
     public Point getScreenSize(Activity activity) {
         Display display = activity.getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
 
-        return  size;
+        return size;
     }
-    public void setUIratio(){
+
+    public void setUIratio() {
         Point ScreenSize = getScreenSize(this);
-        float density  = getResources().getDisplayMetrics().density;
+        float density = getResources().getDisplayMetrics().density;
 
         int standardSize_X = (int) (ScreenSize.x / density);
 
-        btn_update.setTextSize((float)standardSize_X/19);
+        btn_update.setTextSize((float) standardSize_X / 19);
     }
 }

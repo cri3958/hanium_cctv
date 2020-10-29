@@ -18,7 +18,13 @@ import com.google.firebase.messaging.RemoteMessage;
 import com.hanium.cctv.R;
 import com.hanium.cctv.cctv.cctv_watch_emergency;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+
 public class MyFireBaseMessagingService extends FirebaseMessagingService {
+    String file_notification = "data_notification.txt";
+
     @Override
     public void onNewToken(@NonNull String s) {
         Log.d("FCM Log", "Refreshed token: " + s);
@@ -30,16 +36,29 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
     }
 
     private void sendNotification(String title, String body) {
-
         String[] object_num = body.split("번");
         DbHelper dbHelper = new DbHelper(this);
         Boolean checkresult = dbHelper.checkCCTVLIST(object_num[0]);
+        boolean notification = false;
 
-        if (checkresult) { //DB에 저장된 CCTV번호
+        File fFile1 = new File("/data/data/com.hanium.cctv/files/" + file_notification);// notifcation 데이터 불러오기
+        if (fFile1.exists()) {
+            try {
+                FileInputStream inFs = openFileInput(file_notification);
+                byte[] txt = new byte[500];
+                inFs.read(txt);
+                if (new String(txt).trim().equals("true"))
+                    notification = true;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (checkresult & notification) { //DB에 저장된 CCTV번호
             Intent intent = new Intent(this, cctv_watch_emergency.class);
             String[] reason = body.split("에서 ");
-            intent.putExtra("object_num",object_num[0]);
-            intent.putExtra("reason",reason[1]);
+            intent.putExtra("object_num", object_num[0]);
+            intent.putExtra("reason", reason[1]);
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 
@@ -64,7 +83,7 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
             }
             manager.notify(0, notiBuilder.build());
         } else {
-            Log.d("False route", "this user don't add "+object_num[0]+"CCTV!");
+            Log.d("False route", "this user don't add " + object_num[0] + "CCTV!");
         }
 
     }

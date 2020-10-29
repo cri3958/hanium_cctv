@@ -29,17 +29,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SettingActivity extends AppCompatActivity {
-    LinearLayout Setting_1,Setting_2,Setting_3;
-    TextView text_1,text_2,text_3;
+    LinearLayout Setting_1, Setting_2, Setting_3;
+    TextView text_1, text_2, text_3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-        text_1 = (TextView)findViewById(R.id.setting_text_1);
-        text_2 = (TextView)findViewById(R.id.setting_text_2);
-        text_3 = (TextView)findViewById(R.id.setting_text_3);
+        text_1 = (TextView) findViewById(R.id.setting_text_1);
+        text_2 = (TextView) findViewById(R.id.setting_text_2);
+        text_3 = (TextView) findViewById(R.id.setting_text_3);
 
         Toolbar setting_toolbar = findViewById(R.id.setting_toolbar);
         setSupportActionBar(setting_toolbar);
@@ -106,8 +106,9 @@ public class SettingActivity extends AppCompatActivity {
                 dlg.setNegativeButton("NO", null);
 
                 final AlertDialog alertDialog = dlg.create();
-                alertDialog.setOnShowListener( new DialogInterface.OnShowListener() {
-                    @Override public void onShow(DialogInterface arg0) {
+                alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                    @Override
+                    public void onShow(DialogInterface arg0) {
                         alertDialog.getButton(android.app.AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.blue));
                         alertDialog.getButton(android.app.AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.red));
                     }
@@ -134,7 +135,7 @@ public class SettingActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;

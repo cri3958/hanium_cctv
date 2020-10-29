@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Theme.Dark"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".cctv.CctvActivity"
     android:background="@color/background"
-    style="@style/Theme.Dark">
+    tools:context=".cctv.CctvActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,8 +18,7 @@
             android:id="@+id/listview_cctvlist"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="@null"
-            />
+            android:divider="@null" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

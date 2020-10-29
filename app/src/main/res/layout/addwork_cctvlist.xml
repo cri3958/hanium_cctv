@@ -1,175 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/textview"
-    >
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/cctvline1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/edge_white">
+        android:background="@drawable/edge_white"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cctvlist_cctvnum"
-            android:gravity="right"
-            android:textColor="@color/text"
+            android:ems="6"
             android:fontFamily="@font/montserratextralight"
-            android:ems="6" />
+            android:gravity="right"
+            android:text="@string/cctvlist_cctvnum"
+            android:textColor="@color/text" />
+
         <EditText
             android:id="@+id/text_cctvlist_cctvnum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="11"
-            android:textColor="@color/text"
             android:fontFamily="@font/montserratextralight"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:textColor="@color/text" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/cctvline2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cctvline1"
-        android:orientation="horizontal"
-        android:background="@drawable/edge_white">
+        android:background="@drawable/edge_white"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cctvlist_cctvpw"
-            android:gravity="right"
             android:ems="6"
-            android:textColor="@color/text"
-            android:fontFamily="@font/montserratextralight"/>
+            android:fontFamily="@font/montserratextralight"
+            android:gravity="right"
+            android:text="@string/cctvlist_cctvpw"
+            android:textColor="@color/text" />
 
         <EditText
             android:id="@+id/text_cctvlist_cctvpw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="11"
-            android:textColor="@color/text"
             android:fontFamily="@font/montserratextralight"
-            android:inputType="numberPassword" />
+            android:inputType="numberPassword"
+            android:textColor="@color/text" />
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/cctvline3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cctvline2"
-        android:orientation="horizontal"
-        android:background="@drawable/edge_white">
+        android:background="@drawable/edge_white"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cctvlist_name"
-            android:gravity="right"
             android:ems="6"
-            android:textColor="@color/text"
-            android:fontFamily="@font/montserratextralight"/>
+            android:fontFamily="@font/montserratextralight"
+            android:gravity="right"
+            android:text="@string/cctvlist_name"
+            android:textColor="@color/text" />
+
         <EditText
             android:id="@+id/text_cctvlist_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="홍길동"
             android:ems="11"
-            android:textColor="@color/text"
-            android:textColorHint="@color/text"
             android:fontFamily="@font/montserratextralight"
-            android:inputType="textPersonName"/>
+            android:hint="홍길동"
+            android:inputType="textPersonName"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/cctvline4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cctvline3"
-        android:orientation="horizontal"
-        android:background="@drawable/edge_white">
+        android:background="@drawable/edge_white"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cctvlist_place"
-            android:gravity="right"
             android:ems="6"
-            android:textColor="@color/text"
-            android:fontFamily="@font/montserratextralight"/>
+            android:fontFamily="@font/montserratextralight"
+            android:gravity="right"
+            android:text="@string/cctvlist_place"
+            android:textColor="@color/text" />
+
         <EditText
             android:id="@+id/text_cctvlist_place"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="서울특별시 영등포구 ~~~"
             android:ems="11"
-            android:textColor="@color/text"
-            android:textColorHint="@color/text"
             android:fontFamily="@font/montserratextralight"
-            android:inputType="textPersonName"/>
+            android:hint="서울특별시 영등포구 ~~~"
+            android:inputType="textPersonName"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/cctvline5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cctvline4"
-        android:orientation="horizontal"
-        android:background="@drawable/edge_white">
+        android:background="@drawable/edge_white"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cctvlist_special"
-            android:gravity="right"
             android:ems="6"
-            android:textColor="@color/text"
-            android:fontFamily="@font/montserratextralight"/>
+            android:fontFamily="@font/montserratextralight"
+            android:gravity="right"
+            android:text="@string/cctvlist_special"
+            android:textColor="@color/text" />
+
         <EditText
             android:id="@+id/text_cctvlist_special"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="고혈압, 당뇨, ~~~"
             android:ems="11"
-            android:textColor="@color/text"
-            android:textColorHint="@color/text"
             android:fontFamily="@font/montserratextralight"
-            android:inputType="textPersonName"/>
+            android:hint="고혈압, 당뇨, ~~~"
+            android:inputType="textPersonName"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/cctvline6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cctvline5"
         android:orientation="horizontal">
+
         <TextView
             android:id="@+id/btn_cctvlist_cancel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/cancel"
-            android:gravity="center"
             android:layout_weight="1"
+            android:background="@drawable/edge_white"
+            android:gravity="center"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:background="@drawable/edge_white"
+            android:text="@string/cancel"
+            android:textColor="@color/red"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/red" />
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/btn_cctvlist_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/save"
-            android:gravity="center"
             android:layout_weight="1"
+            android:background="@drawable/edge_white"
+            android:gravity="center"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:background="@drawable/edge_white"
+            android:text="@string/save"
+            android:textColor="@color/blue"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/blue" />
+            android:textStyle="bold" />
     </LinearLayout>
 
 </RelativeLayout>

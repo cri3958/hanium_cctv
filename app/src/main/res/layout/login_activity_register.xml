@@ -4,26 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login.RegisterActivity"
-    android:background="@color/background">
+    android:background="@color/background"
+    tools:context=".Login.RegisterActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/register_constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/register_id_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
             android:layout_marginTop="10dp"
             android:background="@color/textview"
+            android:gravity="center"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -45,24 +45,25 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:ems="11"
-                android:hint="@string/mem_id"
-                android:textColorHint="@color/text"
-                android:textColor="@color/text"
                 android:fontFamily="@font/montserratextralight"
-                android:inputType="textPersonName" />
+                android:hint="@string/mem_id"
+                android:inputType="textPersonName"
+                android:textColor="@color/text"
+                android:textColorHint="@color/text" />
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/register_pw_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
             android:layout_marginTop="10dp"
             android:background="@color/textview"
+            android:gravity="center"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_id_layout" >
+            app:layout_constraintTop_toBottomOf="@+id/register_id_layout">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -81,23 +82,24 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:ems="11"
-                android:hint="@string/mem_pw"
-                android:textColorHint="@color/text"
-                android:textColor="@color/text"
                 android:fontFamily="@font/montserratextralight"
-                android:inputType="textPassword" />
+                android:hint="@string/mem_pw"
+                android:inputType="textPassword"
+                android:textColor="@color/text"
+                android:textColorHint="@color/text" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/register_passck_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
             android:layout_marginTop="10dp"
             android:background="@color/textview"
+            android:gravity="center"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_pw_layout" >
+            app:layout_constraintTop_toBottomOf="@+id/register_pw_layout">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -116,23 +118,24 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:ems="11"
-                android:hint="@string/mem_pwcheck"
-                android:textColorHint="@color/text"
-                android:textColor="@color/text"
                 android:fontFamily="@font/montserratextralight"
-                android:inputType="textPassword" />
+                android:hint="@string/mem_pwcheck"
+                android:inputType="textPassword"
+                android:textColor="@color/text"
+                android:textColorHint="@color/text" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/register_name_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
             android:layout_marginTop="10dp"
             android:background="@color/textview"
+            android:gravity="center"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_passck_layout" >
+            app:layout_constraintTop_toBottomOf="@+id/register_passck_layout">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -151,23 +154,24 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:ems="11"
-                android:hint="@string/mem_name"
-                android:textColorHint="@color/text"
-                android:textColor="@color/text"
                 android:fontFamily="@font/montserratextralight"
-                android:inputType="textPersonName" />
+                android:hint="@string/mem_name"
+                android:inputType="textPersonName"
+                android:textColor="@color/text"
+                android:textColorHint="@color/text" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/register_phone_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
             android:layout_marginTop="10dp"
             android:background="@color/textview"
+            android:gravity="center"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_name_layout" >
+            app:layout_constraintTop_toBottomOf="@+id/register_name_layout">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -186,23 +190,24 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:ems="11"
-                android:hint="@string/mem_phone"
-                android:textColorHint="@color/text"
-                android:textColor="@color/text"
                 android:fontFamily="@font/montserratextralight"
-                android:inputType="number"  />
+                android:hint="@string/mem_phone"
+                android:inputType="number"
+                android:textColor="@color/text"
+                android:textColorHint="@color/text" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/register_emergency_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
             android:layout_marginTop="10dp"
             android:background="@color/textview"
+            android:gravity="center"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_phone_layout" >
+            app:layout_constraintTop_toBottomOf="@+id/register_phone_layout">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -221,35 +226,34 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:ems="11"
-                android:hint="@string/mem_emergency"
-                android:textColorHint="@color/text"
-                android:textColor="@color/text"
                 android:fontFamily="@font/montserratextralight"
-                android:inputType="number" />
+                android:hint="@string/mem_emergency"
+                android:inputType="number"
+                android:textColor="@color/text"
+                android:textColorHint="@color/text" />
 
         </LinearLayout>
+
         <TextView
             android:id="@+id/register_btn_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/circle_background_login_btn_register"
-            android:gravity="center"
-            android:text="@string/register"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            android:textColor="@color/text"
-            android:ems="8"
             android:layout_marginTop="20dp"
+            android:background="@drawable/circle_background_login_btn_register"
+            android:ems="8"
+            android:gravity="center"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
+            android:text="@string/register"
+            android:textColor="@color/text"
+            android:textSize="24dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_emergency_layout"/>
+            app:layout_constraintTop_toBottomOf="@+id/register_emergency_layout" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

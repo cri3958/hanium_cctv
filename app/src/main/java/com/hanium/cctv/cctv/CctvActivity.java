@@ -69,7 +69,7 @@ public class CctvActivity extends AppCompatActivity {
     }
 
 
-    private void setupItemClick(){  //야호!
+    private void setupItemClick() {  //야호!
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -84,22 +84,22 @@ public class CctvActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, long id) {
                 AlertDialog.Builder dlg = new AlertDialog.Builder(CctvActivity.this, R.style.MyAlertDialogStyle);
                 dlg.setTitle("Really want delete cctv?");
-                dlg.setPositiveButton("YES", new DialogInterface.OnClickListener(){
+                dlg.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int id)
-                    {
+                    public void onClick(DialogInterface dialog, int id) {
                         db.deleteCCTVLISTById(adapter.getItem(position));
                         adapter.getCctvlist().remove(position);
                         db.updateCCTVLIST(adapter.getCctv());
                         adapter.notifyDataSetChanged();
-                        Toast.makeText(getApplicationContext(),"삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
                     }
                 });
                 dlg.setNegativeButton("NO", null);
 
                 final AlertDialog alertDialog = dlg.create();
-                alertDialog.setOnShowListener( new DialogInterface.OnShowListener() {
-                    @Override public void onShow(DialogInterface arg0) {
+                alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                    @Override
+                    public void onShow(DialogInterface arg0) {
                         alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.blue));
                         alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.red));
                     }
@@ -119,7 +119,7 @@ public class CctvActivity extends AppCompatActivity {
 
     public static class DialogHelper {
         private static boolean check = false;
-        private static EditText text_cctvnum,text_cctvpw,text_name,text_place,text_special;
+        private static EditText text_cctvnum, text_cctvpw, text_name, text_place, text_special;
 
         public static void getAddcctvlistDialog(final Activity activity, final View cctvLayout, final CCTVAdapter adapter) {
             final cctv cctv = new cctv();
@@ -219,6 +219,7 @@ public class CctvActivity extends AppCompatActivity {
             });
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -228,7 +229,7 @@ public class CctvActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 Intent intent = new Intent(CctvActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -236,5 +237,12 @@ public class CctvActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(CctvActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

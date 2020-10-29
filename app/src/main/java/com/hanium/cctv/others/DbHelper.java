@@ -65,7 +65,7 @@ public class DbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertCCTVLIST(cctv cctv){
+    public void insertCCTVLIST(cctv cctv) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(CCTV_NUMBER, cctv.getNumber());
@@ -96,12 +96,13 @@ public class DbHelper extends SQLiteOpenHelper {
         db.update(CCTVLIST, contentValues, CCTV_ID + " = " + cctv.getId(), null);
         db.close();
     }
-    public ArrayList<cctv> getCCTVLIST(){
+
+    public ArrayList<cctv> getCCTVLIST() {
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<cctv> cctvlist = new ArrayList<>();
         cctv cctv;
         Cursor cursor = db.rawQuery("SELECT * FROM " + CCTVLIST + " ORDER BY " + CCTV_NUMBER, null);
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             cctv = new cctv();
             cctv.setId(cursor.getInt(cursor.getColumnIndex(CCTV_ID)));
             cctv.setNumber(cursor.getString(cursor.getColumnIndex(CCTV_NUMBER)));
@@ -143,16 +144,16 @@ public class DbHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public String get1CCTVPLACE(){
+    public String get1CCTVPLACE() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + CCTVLIST + " ORDER BY " + CCTV_NUMBER, null);
         cursor.moveToFirst();
         return cursor.getString(cursor.getColumnIndex(CCTV_PLACE));
     }
 
-    public int countCCTVLIST(){
+    public int countCCTVLIST() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + CCTVLIST , null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + CCTVLIST, null);
         return cursor.getCount();
     }
 

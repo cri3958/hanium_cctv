@@ -21,6 +21,9 @@ import androidx.appcompat.widget.Toolbar;
 import com.hanium.cctv.R;
 import com.hanium.cctv.others.DbHelper;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -28,6 +31,8 @@ public class cctv_watch_emergency extends AppCompatActivity {
     private WebView webView;
     private String url = "http://52.79.107.136/play.html";
     //private String url = "http://54.180.149.38/play.html";
+    String file_autoreport = "data_autoreport.txt";
+
     private TextView btn_emergency;
 
     @Override
@@ -66,7 +71,18 @@ public class cctv_watch_emergency extends AppCompatActivity {
                 SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm");
                 String formatDate = sdfNow.format(date);
 
-                dbHelper.insertRECORDLIST(formatDate, object_info[0], object_info[2], reason);
+                File fFile3 = new File("/data/data/com.hanium.cctv/files/" + file_autoreport);// blind 데이터 불러오기
+                if (fFile3.exists()) {
+                    try {
+                        FileInputStream inFs = openFileInput(file_autoreport);
+                        byte[] txt = new byte[500];
+                        inFs.read(txt);
+                        if (new String(txt).trim().equals("true"))
+                            dbHelper.insertRECORDLIST(formatDate, object_info[0], object_info[2], reason);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
 
                 Intent message = new Intent(Intent.ACTION_SENDTO);
                 String emergencytext = "'" + getString(R.string.app_name) + "' 어플에서 발송되는 응급문자입니다.\n이름 : " + object_info[2] + "\n위치 : " + object_info[3] + "\n특이사항 : " + object_info[4] + "\n신고사유 : " + reason;
@@ -94,6 +110,7 @@ public class cctv_watch_emergency extends AppCompatActivity {
             return true;
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -103,7 +120,7 @@ public class cctv_watch_emergency extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;

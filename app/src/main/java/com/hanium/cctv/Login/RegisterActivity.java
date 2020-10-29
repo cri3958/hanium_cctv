@@ -23,7 +23,7 @@ import org.json.JSONObject;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText et_id, et_pass, et_name, et_passck, et_phone, et_emergency;
-    private TextView btn_register,btn_validate;
+    private TextView btn_register, btn_validate;
     private boolean validate = false;
 
     @Override
@@ -78,14 +78,13 @@ public class RegisterActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
     }
 
-    public void register(){
+    public void register() {
         if (validate) {
             if (et_id.getText().toString().isEmpty() || et_pass.getText().toString().isEmpty() || et_name.getText().toString().isEmpty() || et_passck.getText().toString().isEmpty())
                 Toast.makeText(getApplicationContext(), "정보를 모두 입력해주세요", Toast.LENGTH_SHORT).show();
-            else if(!et_pass.getText().toString().equals(et_passck.getText().toString())){
+            else if (!et_pass.getText().toString().equals(et_passck.getText().toString())) {
                 Toast.makeText(getApplicationContext(), "비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
-            }
-            else {
+            } else {
                 final String mem_id = et_id.getText().toString();
                 final String mem_pw = et_pass.getText().toString();
                 final String mem_name = et_name.getText().toString();

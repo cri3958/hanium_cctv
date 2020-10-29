@@ -75,8 +75,9 @@ public class RecordActivity extends AppCompatActivity {
                 dlg.setNegativeButton("NO", null);
 
                 final AlertDialog alertDialog = dlg.create();
-                alertDialog.setOnShowListener( new DialogInterface.OnShowListener() {
-                    @Override public void onShow(DialogInterface arg0) {
+                alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                    @Override
+                    public void onShow(DialogInterface arg0) {
                         alertDialog.getButton(android.app.AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.blue));
                         alertDialog.getButton(android.app.AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.red));
                     }

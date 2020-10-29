@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     android:orientation="vertical"
-    tools:context=".others.SettingActivity"
-    android:background="@color/background">
+    tools:context=".others.SettingActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/setting_toolbar"
@@ -15,20 +15,20 @@
         android:background="@drawable/underbar"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/Theme.Dark"
-        app:titleTextColor="@color/text"
+        app:layout_constraintTop_toTopOf="parent"
 
-        app:layout_constraintTop_toTopOf="parent" />
+        app:titleTextColor="@color/text" />
 
     <LinearLayout
         android:id="@+id/setting_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setting_toolbar"
         android:background="@drawable/edge"
+        android:orientation="horizontal"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:paddingBottom="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setting_toolbar">
 
         <TextView
             android:id="@+id/setting_text_1"
@@ -36,12 +36,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10sp"
             android:layout_weight="5"
-            android:gravity="center_vertical"
-            android:text="@string/Setting_1"
             android:ems="7"
             android:fontFamily="@font/montserratextralight"
+            android:gravity="center_vertical"
+            android:text="@string/Setting_1"
             android:textColor="@color/text"
             android:textSize="15sp" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -54,13 +55,13 @@
         android:id="@+id/setting_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/setting_1"
-        android:background="@drawable/edge"
         android:layout_marginTop="1dp"
+        android:background="@drawable/edge"
+        android:orientation="horizontal"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:paddingBottom="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/setting_1">
 
         <TextView
             android:id="@+id/setting_text_2"
@@ -68,12 +69,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10sp"
             android:layout_weight="5"
-            android:gravity="center_vertical"
-            android:text="@string/Setting_2"
             android:ems="7"
             android:fontFamily="@font/montserratextralight"
+            android:gravity="center_vertical"
+            android:text="@string/Setting_2"
             android:textColor="@color/text"
             android:textSize="15sp" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -86,13 +88,13 @@
         android:id="@+id/setting_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/setting_2"
-        android:background="@drawable/edge"
         android:layout_marginTop="1dp"
+        android:background="@drawable/edge"
+        android:orientation="horizontal"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:paddingBottom="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/setting_2">
 
         <TextView
             android:id="@+id/setting_text_3"
@@ -100,12 +102,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10sp"
             android:layout_weight="5"
-            android:gravity="center_vertical"
-            android:text="@string/Setting_3"
             android:ems="7"
             android:fontFamily="@font/montserratextralight"
+            android:gravity="center_vertical"
+            android:text="@string/Setting_3"
             android:textColor="#FF5252"
             android:textSize="15sp" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

@@ -9,9 +9,9 @@ import java.util.Map;
 
 public class ValidateRequest extends StringRequest {
 
-    final static private String URL="http://leehojin0207.dothome.co.kr/UserValidate.php";
+    final static private String URL = "http://leehojin0207.dothome.co.kr/UserValidate.php";
     //final static private String URL="http://13.125.249.248/UserValidate.php";
-    private Map<String,String> map;
+    private Map<String, String> map;
 
     public ValidateRequest(String mem_id, Response.Listener<String> listener) {
         super(Method.POST, URL, listener, null);
